@@ -12,9 +12,9 @@
 
 ### 🌱 **In the Spare Time I'm Learning:**
 
-- [Processing](https://processing.org) &rarr; a free and flexible graphics library for sketchbook and visual arts that uses the Java programming language as base, [wiki](https://en.wikipedia.org/wiki/Processing)
+- [Processing](https://processing.org) &rarr; a free and flexible graphics library for visual arts to create interactive and non-interactive installations, it uses the Java programming language as base [wiki](https://en.wikipedia.org/wiki/Processing)
 
-  <!-- - P5.JS &rarr; is the web-based version of Processing -->
+  <!-- - [P5.JS](https://p5js.org/) &rarr; is the web-based version of Processing writed in JavaScript to eneble creative coding for your sites -->
 
 - [Spring](https://spring.io/why-spring) &rarr; a free and open-source framework for the Java platform with different core features that can be used by any Java application [wiki](https://en.wikipedia.org/wiki/Spring_Framework)
 
@@ -32,5 +32,5 @@
 
 ## How to reach me?
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn–FrancescoRogo-blue)](https://www.linkedin.com/in/francesco-rogo/)
-[![Email](https://img.shields.io/badge/francescorogo22@gmail.it-green)](mailto:mio@email.it)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-darkblue)](https://www.linkedin.com/in/francesco-rogo/)
+[![Email](https://img.shields.io/badge/Email-darkgreen)](https://mail.google.com/mail/?view=cm&fs=1&to=francescorogo22@gmail.com&su=[From%20GitHub]%20IlTuoMessaggio&body=)
