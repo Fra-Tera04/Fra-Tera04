@@ -1,0 +1,192 @@
+/* Stili Generali e Reset */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif; /* Sostituisci con un font più elegante */
+  line-height: 1.6;
+  color: #cad5d0; /* Colore testo principale */
+  background-color: #3e0909; /* Sfondo chiaro */
+}
+
+a {
+  text-decoration: none;
+  color: #007bff; /* Colore link */
+}
+
+/* Header e Navigazione */
+header {
+  background-color: #300303;
+  padding: 1rem 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: fixed; /* Fissa la navigazione in alto */
+  width: 100%;
+  z-index: 1000;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+nav ul li a {
+  color: #555;
+  font-weight: bold;
+  transition: color 0.3s ease; /* Effetto al passaggio del mouse */
+}
+
+nav ul li a:hover {
+  color: #007bff;
+}
+
+/* Sezioni Generali */
+.section {
+  padding: 80px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section:nth-of-type(even) {
+  /* Sfondo leggermente diverso per sezioni alterne */
+  background-color: #190202;
+}
+
+h1,
+h2 {
+  color: #222;
+  margin-bottom: 20px;
+}
+
+/* Hero Section (sezione iniziale) */
+.hero-section {
+  background-color: #220404;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Altezza piena della finestra */
+  text-align: center;
+  padding-top: 60px; /* Spazio per la nav fissa */
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+}
+
+.hero-content p {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #007bff;
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+/* Portfolio Grid */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  ); /* Layout responsivo con griglia */
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.project-item {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.project-item:hover {
+  transform: translateY(-5px); /* Effetto leggero al passaggio del mouse */
+}
+
+.project-item img {
+  width: 100%;
+  height: 200px; /* Altezza fissa per le immagini del progetto */
+  object-fit: cover; /* Assicura che l'immagine copra l'area */
+}
+
+.project-item h3 {
+  padding: 15px;
+  margin: 0;
+  color: #838282;
+}
+
+.project-item p {
+  padding: 0 15px 15px;
+  font-size: 0.9rem;
+  color: #9b9999;
+}
+
+/* Footer */
+footer {
+  background-color: #350404;
+  color: #4e4a4a;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.9rem;
+}
+
+/* Media Queries per la Responsività */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav ul {
+    margin-top: 15px;
+    flex-direction: column;
+    width: 100%;
+    text-align: left;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem;
+    text-align: left;
+  }
+
+  .hero-content p {
+    font-size: 1.2rem;
+  }
+}

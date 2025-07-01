@@ -1,0 +1,470 @@
+/* Importazione di font simili a quelli usati su daspritam.in */
+/* Puoi decommentare queste linee se vuoi usare questi font di Google Fonts */
+/* Se non le usi, il browser userà il font di fallback 'sans-serif' */
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Nunito:ital,wght@0,200;1,200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Nunito:ital,wght@0,200;1,200&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+
+/* Ho scelto Roboto e Montserrat come esempi semplici e puliti */
+/* Puoi sostituirli con Satoshi e Space Mono se li scarichi o li trovi su Google Fonts */
+
+:root {
+  /* Variabili CSS per colori - rendono facile cambiare il tema */
+  --color-dark: #000000;
+  --color-medium-dark: #1a1a1a;
+  --color-light-text: #f0f0f0;
+  --color-accent: #00bcd4; /* Un blu/ciano per gli accenti, come sul sito ispirazione */
+  --color-accent2: #001aaa;
+  --color-border: #444; /* Colore per linee e separatori */
+}
+
+/* Stili Globali */
+body {
+  font-family: "Cascadia Code", sans-serif; /* Font primario */
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-dark);
+  color: var(--color-light-text);
+  line-height: 1.6;
+  scroll-behavior: smooth; /* Per uno scroll più fluido verso gli ID */
+}
+
+a {
+  color: var(--color-light-text);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0; /* Rimuove margini predefiniti per un controllo totale */
+  padding: 0;
+}
+
+/* --- HERO SECTION (HEADER) --- */
+.hero-section {
+  min-height: 100vh; /* Occupa l'intera altezza della viewport */
+  background-color: var(--color-dark);
+  display: flex;
+  flex-direction: column; /* Contenuto impilato verticalmente */
+  justify-content: space-between; /* Spinge logo/titolo in alto e descrizione in basso */
+  padding: 4vh 4vw; /* Padding responsivo */
+  box-sizing: border-box; /* Assicura che padding e border siano inclusi nella larghezza/altezza */
+}
+
+.header-content {
+  margin-top: 5vh; /* Spazio dall'alto */
+}
+
+.main-title {
+  font-family: "Cascadia Code", sans-serif; /* Font per i titoli grandi */
+  font-size: 12vw; /* Dimensione responsiva basata sulla larghezza della viewport */
+  font-weight: 200;
+  max-width: 10vw; /* Larghezza limitata per la descrizione */
+  line-height: 0.9; /* Spaziatura tra le righe ridotta */
+  letter-spacing: -0.05em; /* Spazio tra le lettere */
+  text-transform: uppercase;
+  color: var(--color-light-text);
+  text-align: left; /* Default a sinistra */
+}
+
+.center-main-subtitle {
+  font-family: "Cascadia Code", sans-serif; /* Font per sottotitoli/monospaced, per un tocco tecnico */
+  font-size: 1.2vw; /* Dimensione responsiva */
+  color: var(--color-accent);
+  margin-top: 1rem;
+  text-transform: uppercase;
+  text-align: left; /* Sottotitolo allineato a destra */
+}
+
+.subtitle {
+  font-family: "Cascadia Code", sans-serif; /* Font per sottotitoli/monospaced, per un tocco tecnico */
+  font-size: 1.2vw; /* Dimensione responsiva */
+  color: var(--color-accent);
+  margin-top: 1rem;
+  text-transform: uppercase;
+  text-align: right; /* Sottotitolo allineato a destra */
+}
+
+.header-description {
+  max-width: 30vw; /* Larghezza limitata per la descrizione */
+  margin-bottom: 5vh; /* Spazio dal basso */
+  align-self: flex-start; /* Allinea la descrizione a sinistra */
+}
+
+.header-description p {
+  font-family: "Roboto", monospace;
+  font-size: 1vw; /* Testo piccolo e responsivo */
+  line-height: 1.5;
+  text-align: justify;
+  color: var(--color-light-text);
+}
+
+.button {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  margin-top: 2rem;
+  background-color: var(--color-accent);
+  color: var(--color-dark); /* Testo scuro sul bottone accentuato */
+  font-family: "Roboto", monospace;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #008fa3; /* Tonalità leggermente più scura */
+  color: var(--color-light-text);
+}
+
+/* --- SEZIONI GENERALI --- */
+.section-full-height {
+  min-height: 100vh; /* Sezione che occupa l'intera altezza della viewport */
+  background-color: var(--color-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4vh 4vw;
+  box-sizing: border-box;
+}
+
+.section-half-height {
+  min-height: 50vh; /* Sezione che occupa mezza altezza */
+  background-color: var(--color-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4vh 4vw;
+  box-sizing: border-box;
+}
+
+.section-centered {
+  min-height: 80vh; /* Adatto per il footer */
+  background-color: var(--color-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4vh 4vw;
+  box-sizing: border-box;
+}
+
+.section-content-wrapper {
+  max-width: 1200px; /* Larghezza massima del contenuto, come sul sito ispirazione */
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Allinea il contenuto a sinistra di default */
+}
+
+.section-title {
+  font-family: "Cascadia Code", sans-serif;
+  font-size: 10vw; /* Titoli grandi per le sezioni */
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  color: var(--color-light-text);
+  width: 100%; /* Occupa tutta la larghezza per gli allineamenti */
+}
+
+.section-description {
+  font-family: "Cascadia Code", sans-serif;
+  font-size: 1.2vw;
+  /*line-height: 1.5;*/
+  color: var(--color-light-text);
+  margin-top: 2rem;
+  max-width: 40vw; /* Larghezza limitata per le descrizioni lunghe */
+}
+
+.text-right {
+  text-align: right;
+  align-self: flex-end;
+} /* Utility per testo a destra */
+.text-center {
+  text-align: center;
+  align-self: center;
+} /* Utility per testo al centro */
+.text-left {
+  text-align: left;
+  align-self: flex-start;
+} /* Utility per testo a sinistra */
+
+/* --- SEZIONE SERVIZI --- */
+.services-layout {
+  flex-direction: row; /* Intro a sinistra, lista servizi a destra */
+  justify-content: space-between;
+  align-items: flex-start; /* Allinea gli elementi in alto */
+  flex-wrap: wrap; /* Permette agli elementi di andare a capo su schermi piccoli */
+}
+
+.services-intro {
+  flex: 1; /* Prende spazio disponibile */
+  max-width: 35vw; /* Larghezza per l'introduzione */
+  margin-right: 2rem;
+}
+
+.services-intro p {
+  font-family: "Cascadia Code", sans-serif;
+  font-size: 1vw;
+  line-height: 1.5;
+  color: var(--color-light-text);
+}
+
+.service-list {
+  flex: 2; /* Prende più spazio */
+  max-width: 55vw;
+}
+
+.service-item {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--color-border); /* Linea divisoria */
+}
+
+.service-item:last-child {
+  border-bottom: none; /* Rimuove la linea sull'ultimo elemento */
+}
+
+.service-number {
+  font-family: "Cascadia Code", sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--color-accent);
+  margin-right: 2rem;
+  min-width: 30px; /* Larghezza fissa per i numeri */
+}
+
+.service-text {
+  font-family: "Cascadia Code", sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-light-text);
+  text-transform: uppercase;
+}
+
+/* --- SEZIONE PROGETTI --- */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  ); /* Colonne adattive */
+  gap: 3rem; /* Spazio tra le card */
+  width: 100%;
+  margin-top: 4rem;
+}
+
+.project-card {
+  background-color: var(--color-medium-dark);
+  border-radius: 8px;
+  overflow: hidden; /* Nasconde ciò che esce dai bordi arrotondati */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px); /* Leggero sollevamento al hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+.project-card img {
+  width: 100%;
+  height: 250px; /* Altezza fissa per le immagini dei progetti */
+  object-fit: cover; /* Assicura che l'immagine copra l'area */
+  display: block;
+}
+
+.project-card h3 {
+  font-family: "Cascadia Code", sans-serif;
+  font-size: 1.8rem;
+  color: var(--color-accent);
+  padding: 1.5rem 1.5rem 0.5rem;
+  text-transform: uppercase;
+}
+
+.project-card a {
+  display: inline-block;
+  padding: 0.5rem 1.5rem 1.5rem;
+  color: var(--color-light-text);
+  font-family: "Roboto", monospace;
+  font-weight: bold;
+}
+.project-card a:hover {
+  color: var(--color-accent);
+}
+
+/* --- FOOTER --- */
+.footer {
+  background-color: var(--color-medium-dark);
+  color: var(--color-light-text);
+  text-align: center;
+  padding: 2rem 4vw;
+  font-family: "Roboto", monospace;
+  font-size: 0.9rem;
+}
+
+.social-links {
+  margin-top: 3rem;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  text-transform: uppercase;
+  font-family: "Roboto", monospace;
+}
+.social-links a {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+/* --- RESPONSIVITÀ (Media Queries) --- */
+@media (max-width: 1024px) {
+  /* Per schermi tablet e laptop più piccoli */
+  .hero-section {
+    padding: 6vh 6vw;
+  }
+  .main-title {
+    font-size: 15vw;
+  }
+  .subtitle {
+    font-size: 2vw;
+    text-align: left; /* Allinea a sinistra sui tablet */
+    margin-top: 2rem;
+  }
+  .header-description {
+    max-width: 60vw;
+    margin-top: 5vh;
+    align-self: flex-start;
+  }
+  .header-description p {
+    font-size: 1.5vw;
+  }
+  .button {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  .section-title {
+    font-size: 13vw;
+  }
+  .section-description {
+    font-size: 1.8vw;
+    max-width: 60vw;
+  }
+
+  .services-layout {
+    flex-direction: column; /* Impila su tablet */
+    align-items: center;
+    text-align: center;
+  }
+  .services-intro {
+    max-width: 80vw;
+    margin-right: 0;
+    margin-bottom: 3rem;
+  }
+  .services-intro p {
+    font-size: 1.8vw;
+  }
+  .service-list {
+    max-width: 80vw;
+  }
+  .service-item {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Per schermi mobile */
+  .hero-section,
+  .section-full-height,
+  .section-half-height,
+  .section-centered {
+    padding: 5vh 5vw;
+  }
+
+  .main-title {
+    font-size: 18vw;
+    text-align: center;
+  }
+  .subtitle {
+    font-size: 3vw;
+    text-align: center;
+  }
+  .header-description {
+    max-width: 90vw;
+    align-self: center;
+    text-align: center;
+  }
+  .header-description p {
+    font-size: 3.5vw;
+  }
+
+  .section-title {
+    font-size: 16vw;
+    text-align: center !important; /* Forza allineamento centrale su mobile */
+    align-self: center !important;
+  }
+  .section-description {
+    font-size: 4vw;
+    max-width: 90vw;
+    text-align: center !important;
+    align-self: center !important;
+  }
+
+  .services-intro p {
+    font-size: 4vw;
+  }
+  .service-number {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+  }
+  .service-text {
+    font-size: 1.2rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr; /* Una singola colonna per mobile */
+    gap: 2rem;
+  }
+
+  .social-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Piccoli schermi mobile */
+  .main-title {
+    font-size: 20vw;
+  }
+  .subtitle {
+    font-size: 4vw;
+  }
+  .header-description p {
+    font-size: 4.5vw;
+  }
+  .section-title {
+    font-size: 18vw;
+  }
+  .section-description {
+    font-size: 5vw;
+  }
+  .services-intro p {
+    font-size: 5vw;
+  }
+  .service-text {
+    font-size: 1rem;
+  }
+  .button {
+    font-size: 0.9rem;
+  }
+}
