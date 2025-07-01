@@ -24,6 +24,10 @@
 
 **Linguaggi & Strumenti:** Java 8+ • SpringBoot • git • github
 
+### 🛠️ **Knows**
+
+**Linguaggi & Strumenti:** Java 8+ • SpringBoot • Git • Github • Python 3 • HTML5 • CSS • NODEJS • Matlab
+
 ## 🚀 Progetti in evidenza
 
 <!-- repo-list start -->
@@ -33,4 +37,5 @@
 ## How to reach me?
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-darkblue)](https://www.linkedin.com/in/francesco-rogo/)
-[![Email](https://img.shields.io/badge/Email-darkgreen)](https://mail.google.com/mail/?view=cm&fs=1&to=francescorogo22@gmail.com&su=[From%20GitHub]%20IlTuoMessaggio&body=)
+[![Email](https://img.shields.io/badge/Email-darkgreen)](https://mail.google.com/mail/?view=cm&fs=1&to=francescorogo22@gmail.com&su=[From%20GitHub]%20Il-Tuo-Messaggio&body=)
+[![Il_Mio_Sito](https://img.shields.io/badge/Il_Mio_Sito-darkred)](https://github.miosito)
