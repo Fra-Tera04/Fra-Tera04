@@ -17,8 +17,8 @@
 /* --- VARIABILI CSS (Custom Properties) --- */
 /* Good Practice: Rendono il tema facilmente modificabile e consistente */
 :root {
-  --color-dark: #001100; /* Colore di sfondo principale */
-  --color-medium-dark: #252525; /* Per elementi come il footer o card projects */
+  --color-dark: #000000; /* Colore di sfondo principale */
+  --color-medium-dark: #050505; /* Per elementi come il footer o card projects */
   --color-light-text: #f0f0f0; /* Colore principale del testo chiaro */
   --color-accent: #00a3b3; /* Blu/ciano, come su daspritam.in */
   --color-border: #411; /* Colore per linee e divisori sottili */
@@ -101,6 +101,71 @@ p {
   align-items: flex-start; /* Allinea il contenuto a sinistra di default */
 }
 
+/* style.css */
+
+/* ... (le tue variabili CSS esistenti) ... */
+.top-aligned-elements {
+  position: absolute; /* Posiziona questo div rispetto al suo genitore (.hero-section) */
+  top: 0; /* Allinea al bordo superiore del genitore */
+  left: 0; /* Allinea al bordo sinistro del genitore */
+  width: 100%; /* Occupa tutta la larghezza del genitore */
+  display: flex; /* Attiva Flexbox per i suoi figli */
+  justify-content: space-between; /* Spinge gli elementi a sinistra, centro e destra */
+  align-items: center; /* Centra verticalmente gli elementi al suo interno */
+  padding: 1rem var(--spacing-medium); /* Padding interno per non far toccare i bordi */
+  box-sizing: border-box; /* Include padding nel calcolo della larghezza */
+  z-index: 10; /* Assicura che sia sopra gli altri elementi se ce ne sono */
+}
+
+.top-item-left,
+.top-item-center,
+.top-item-right {
+  /* Stili di base per i contenitori delle parole */
+  padding: 0.5rem 1rem; /* Padding interno per le singole parole */
+  opacity: 0.5; /* Rende la parola opaca al 50% */
+}
+
+.top-item-left:hover,
+.top-item-center:hover,
+.top-item-right:hover {
+  opacity: 1;
+}
+
+.top-item-center {
+  flex-grow: 1; /* Permette al div centrale di espandersi */
+  text-align: center; /* Centra il testo al suo interno */
+}
+
+.small-text {
+  font-family: var(--font-body);
+  font-size: 0.9rem; /* Dimensione piccola per il testo */
+  color: var(--color-light);
+  margin: 0; /* Rimuove i margini predefiniti del paragrafo */
+  white-space: nowrap; /* Impedisce che il testo vada a capo */
+  text-transform: uppercase; /* Rende il testo maiuscolo */
+  letter-spacing: 0.05em; /* Spaziatura tra le lettere */
+}
+
+/* Media Queries per la Responsività */
+@media (max-width: 768px) {
+  .top-aligned-elements {
+    flex-direction: column; /* Impila i div verticalmente su schermi piccoli */
+    position: relative; /* Rimuovi il posizionamento assoluto per lasciare che il flusso del documento li gestisca */
+    padding: 1rem var(--spacing-small);
+    gap: 0.5rem; /* Spazio tra gli elementi impilati */
+  }
+
+  .top-item-left,
+  .top-item-center,
+  .top-item-right {
+    width: 100%; /* Occupano l'intera larghezza */
+    text-align: center; /* Centrano il testo */
+    padding: 0.2rem 0; /* Riduci il padding verticale */
+  }
+}
+
+/* fine */
+
 /* Classi utility per allineamento testo (sovrascrivono align-items del wrapper) */
 .text-left {
   text-align: left;
@@ -166,7 +231,7 @@ p {
 .main-title {
   font-family: "Cascadia Code", sans-serif;
   font-size: 10vw; /* Dimensione responsiva enorme per i titoli */
-  font-weight: 200;
+  font-weight: 400;
   line-height: 0.9; /* Avvicina le righe per un aspetto compatto */
   letter-spacing: -0.05em; /* Avvicina leggermente le lettere */
   text-transform: uppercase;
@@ -202,6 +267,7 @@ p {
 .section-title {
   font-family: "Cascadia Code", sans-serif;
   font-size: 8vw; /* Titoli grandi per le sezioni */
+  /* font-weight: 400; /* */
   line-height: 0.9;
   letter-spacing: -0.05em;
   text-transform: uppercase;
@@ -210,10 +276,10 @@ p {
 }
 
 .create {
-  margin-top: 1vw;
+  margin-top: 0vw;
   margin-bottom: 1vw;
-  margin-right: 1vw;
-  margin-left: 1vw;
+  margin-right: 2vw;
+  margin-left: -2vw;
 }
 
 .unique {
@@ -225,45 +291,69 @@ p {
 
 .experience {
   margin-top: 1vw;
-  margin-bottom: 1vw;
+  margin-bottom: 2vw;
   margin-right: -5vw;
   margin-left: -5vw;
 }
 
 .imiei {
-  margin-top: 1vw;
+  margin-top: 5vw;
   margin-bottom: 1vw;
-  margin-right: 1vw;
-  margin-left: 1vw;
-
+  margin-right: 3vw;
+  margin-left: -3vw;
+  /* 
   padding-top: 1px;
+  padding-bottom: 2px;
   padding-right: 3px;
-  padding-bottom: 5px;
-  padding-left: 8px;
+  padding-left: 8px; 
+  */
 }
 
 .ultimi {
   margin-top: 0vw;
-  margin-bottom: 0vw;
-  margin-right: 9vw;
-  margin-left: 1vw;
+  margin-bottom: 1vw;
+  margin-right: 10vw;
+  margin-left: 3vw;
 
-  padding-top: 5px;
+  /* 
+  padding-top: 1px;
   padding-right: 1;
   padding-bottom: 1px;
-  padding-left: 5px;
+  padding-left: 5px; 
+  */
 }
 
 .lavori {
   margin-top: 0vw;
-  margin-bottom: 0vw;
+  margin-bottom: 1vw;
   margin-right: 1vw;
   margin-left: 1vw;
 
+  /* 
   padding-top: 1px;
   padding-right: 8px;
   padding-bottom: 5px;
-  padding-left: 30px;
+  padding-left: 30px; 
+  */
+}
+
+.lasciamo {
+  margin-top: 10vw;
+  margin-bottom: 1vw;
+  margin-right: 1vw;
+  margin-left: -5vw;
+}
+.unsegno {
+  margin-top: 0vw;
+  margin-bottom: 1vw;
+  margin-right: 6vw;
+  margin-left: 1vw;
+}
+.insieme {
+  margin-top: 0vw;
+  margin-bottom: 1vw;
+  margin-right: 1vw;
+  margin-left: 1vw;
 }
 
 .section-description {
@@ -298,19 +388,14 @@ p {
 
 /*///////////////////////////////////////////////////////////////////////////////////////////*/
 .glowing-word {
-  /* Deve essere inline-block per applicare shadow intorno al testo */
-  display: flex;
-  padding: 2px 5px; /* Spazio interno prima del "glow" */
-  background-color: transparent; /* O il colore del tuo testo */
-  color: yellow; /* Colore del testo */
-
-  /* Box shadow: offset-x | offset-y | blur-radius | spread-radius | color */
-  /* Per un bordo continuo, non avere offset-x/y e un blur-radius basso/nullo */
-
-  /* Per un effetto glow più visibile: */
-  /* box-shadow: 0 0 5px yellow, 0 0 10px yellow; */ /* Multipli shadow per un glow */
-  border-radius: 3px; /* Se vuoi angoli arrotondati */
-  white-space: nowrap;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-light);
+  /* Per l'effetto glow, puoi aggiungere shadow o pseudo-elementi */
+  text-shadow: 0 0 5px var(--color-accent), 0 0 10px var(--color-accent),
+    0 0 15px var(--color-accent);
+  margin-bottom: var(--spacing-medium);
+  display: block; /* Assicura che sia un blocco per il margine */
 }
 /*///////////////////////////////////////////////////////////////////////////////////////////*/
 

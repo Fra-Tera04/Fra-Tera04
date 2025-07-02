@@ -1,470 +1,400 @@
-/* Importazione di font simili a quelli usati su daspritam.in */
-/* Puoi decommentare queste linee se vuoi usare questi font di Google Fonts */
-/* Se non le usi, il browser userà il font di fallback 'sans-serif' */
+/* Importazione del font 'Plus Jakarta Sans' da Google Fonts */
+/* Assicurati che questo sia all'inizio del tuo file style.css */
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;500;700;800&display=swap");
 
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Nunito:ital,wght@0,200;1,200&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Nunito:ital,wght@0,200;1,200&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
-
-/* Ho scelto Roboto e Montserrat come esempi semplici e puliti */
-/* Puoi sostituirli con Satoshi e Space Mono se li scarichi o li trovi su Google Fonts */
-
+/* --- VARIABILI CSS (Custom Properties) --- */
 :root {
-  /* Variabili CSS per colori - rendono facile cambiare il tema */
-  --color-dark: #000000;
-  --color-medium-dark: #1a1a1a;
-  --color-light-text: #f0f0f0;
-  --color-accent: #00bcd4; /* Un blu/ciano per gli accenti, come sul sito ispirazione */
-  --color-accent2: #001aaa;
-  --color-border: #444; /* Colore per linee e separatori */
+  --color-dark: #000000; /* Sfondo scuro */
+  --color-light: #ffffff; /* Testo chiaro */
+  --color-accent: #ff6b6b; /* Un rosso/arancio simile all'originale */
+  --spacing-xl: 8rem;
+  --spacing-large: 6rem;
+  --spacing-medium: 3rem;
+  --spacing-small: 1.5rem;
+  --font-heading: "Plus Jakarta Sans", sans-serif;
+  --font-body: "Plus Jakarta Sans", sans-serif;
 }
 
-/* Stili Globali */
+/* --- RESET & Stili Base --- */
+html {
+  scroll-behavior: smooth; /* Scorrimento fluido per i link interni */
+}
+
 body {
-  font-family: "Cascadia Code", sans-serif; /* Font primario */
   margin: 0;
-  padding: 0;
+  font-family: var(--font-body);
   background-color: var(--color-dark);
-  color: var(--color-light-text);
+  color: var(--color-light);
+  overflow-x: hidden; /* Previene scroll orizzontale non voluto */
   line-height: 1.6;
-  scroll-behavior: smooth; /* Per uno scroll più fluido verso gli ID */
 }
 
-a {
-  color: var(--color-light-text);
-  text-decoration: none;
-  transition: color 0.3s ease;
+/* --- CLASSI GENERALI PER SEZIONI --- */
+.section {
+  min-height: 100vh; /* Ogni sezione occupa l'intera altezza della viewport */
+  display: flex; /* Per centrare il contenuto verticalmente */
+  align-items: center; /* Centra verticalmente il contenuto */
+  justify-content: center; /* Centra orizzontalmente il contenuto */
+  padding: var(
+    --spacing-medium
+  ); /* Padding generale per spaziatura dai bordi */
+  box-sizing: border-box; /* Include padding nel calcolo dell'altezza */
+  position: relative; /* Per posizionare elementi figli */
+  z-index: 1; /* Assicura che il contenuto sia sopra sfondi o animazioni */
 }
 
-a:hover {
-  color: var(--color-accent);
+.section-content-wrapper {
+  width: 100%;
+  max-width: 1200px; /* Larghezza massima del contenuto, come nel sito di Pritam */
+  padding: 0 var(--spacing-medium); /* Padding laterale per il wrapper */
+  box-sizing: border-box;
 }
 
-h1,
-h2,
-h3,
-p {
-  margin: 0; /* Rimuove margini predefiniti per un controllo totale */
-  padding: 0;
-}
-
-/* --- HERO SECTION (HEADER) --- */
+/* --- HEADER / HERO SECTION --- */
 .hero-section {
-  min-height: 100vh; /* Occupa l'intera altezza della viewport */
-  background-color: var(--color-dark);
-  display: flex;
-  flex-direction: column; /* Contenuto impilato verticalmente */
-  justify-content: space-between; /* Spinge logo/titolo in alto e descrizione in basso */
-  padding: 4vh 4vw; /* Padding responsivo */
-  box-sizing: border-box; /* Assicura che padding e border siano inclusi nella larghezza/altezza */
+  background-color: var(--color-dark); /* Sfondo scuro per la header */
+  color: var(--color-light);
 }
 
-.header-content {
-  margin-top: 5vh; /* Spazio dall'alto */
+.hero-layout {
+  display: flex; /* Layout a due colonne */
+  flex-wrap: wrap; /* Le colonne vanno a capo su schermi piccoli */
+  gap: var(--spacing-large); /* Spazio generoso tra le colonne */
+  align-items: center; /* Centra verticalmente le due colonne */
+}
+
+.hero-left-col,
+.hero-right-col {
+  flex: 1; /* Permette alle colonne di crescere e occupare spazio equamente */
+  min-width: 300px; /* Larghezza minima prima che vadano a capo */
 }
 
 .main-title {
-  font-family: "Cascadia Code", sans-serif; /* Font per i titoli grandi */
-  font-size: 12vw; /* Dimensione responsiva basata sulla larghezza della viewport */
-  font-weight: 200;
-  max-width: 10vw; /* Larghezza limitata per la descrizione */
-  line-height: 0.9; /* Spaziatura tra le righe ridotta */
-  letter-spacing: -0.05em; /* Spazio tra le lettere */
+  font-family: var(--font-heading);
+  /* clamp(min, ideal-viewport-relative, max) */
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 800; /* Extra bold */
+  line-height: 0.8; /* Rimuove spazio extra tra le righe di testo */
+  margin: 0;
+  color: var(--color-light);
   text-transform: uppercase;
-  color: var(--color-light-text);
-  text-align: left; /* Default a sinistra */
-}
-
-.center-main-subtitle {
-  font-family: "Cascadia Code", sans-serif; /* Font per sottotitoli/monospaced, per un tocco tecnico */
-  font-size: 1.2vw; /* Dimensione responsiva */
-  color: var(--color-accent);
-  margin-top: 1rem;
-  text-transform: uppercase;
-  text-align: left; /* Sottotitolo allineato a destra */
 }
 
 .subtitle {
-  font-family: "Cascadia Code", sans-serif; /* Font per sottotitoli/monospaced, per un tocco tecnico */
-  font-size: 1.2vw; /* Dimensione responsiva */
-  color: var(--color-accent);
-  margin-top: 1rem;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2.5vw, 1.8rem);
+  font-weight: 500;
+  color: var(--color-light);
+  margin-top: var(--spacing-small);
   text-transform: uppercase;
-  text-align: right; /* Sottotitolo allineato a destra */
+  letter-spacing: 0.1em;
 }
 
-.header-description {
-  max-width: 30vw; /* Larghezza limitata per la descrizione */
-  margin-bottom: 5vh; /* Spazio dal basso */
-  align-self: flex-start; /* Allinea la descrizione a sinistra */
-}
-
-.header-description p {
-  font-family: "Roboto", monospace;
-  font-size: 1vw; /* Testo piccolo e responsivo */
-  line-height: 1.5;
-  text-align: justify;
-  color: var(--color-light-text);
+.header-description-text {
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  line-height: 1.6;
+  color: var(--color-light);
+  margin-bottom: var(--spacing-medium);
+  max-width: 500px; /* Limita la larghezza per una migliore leggibilità */
 }
 
 .button {
   display: inline-block;
-  padding: 0.8rem 1.8rem;
-  margin-top: 2rem;
   background-color: var(--color-accent);
-  color: var(--color-dark); /* Testo scuro sul bottone accentuato */
-  font-family: "Roboto", monospace;
-  font-weight: bold;
-  text-transform: uppercase;
+  color: var(--color-dark); /* Testo scuro sul bottone chiaro */
+  padding: 0.8rem 2.5rem;
+  text-decoration: none;
   border-radius: 5px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+  border: none;
+  cursor: pointer;
 }
 
 .button:hover {
-  background-color: #008fa3; /* Tonalità leggermente più scura */
-  color: var(--color-light-text);
+  background-color: #ff4d4d; /* Tonalità più scura al hover */
 }
 
-/* --- SEZIONI GENERALI --- */
-.section-full-height {
-  min-height: 100vh; /* Sezione che occupa l'intera altezza della viewport */
+/* --- SEZIONE ABOUT (con titoli allineati a sinistra/centro/destra) --- */
+.about-section {
   background-color: var(--color-dark);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 4vh 4vw;
-  box-sizing: border-box;
+  color: var(--color-light);
 }
 
-.section-half-height {
-  min-height: 50vh; /* Sezione che occupa mezza altezza */
-  background-color: var(--color-dark);
+.split-titles {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 4vh 4vw;
-  box-sizing: border-box;
-}
-
-.section-centered {
-  min-height: 80vh; /* Adatto per il footer */
-  background-color: var(--color-dark);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 4vh 4vw;
-  box-sizing: border-box;
-}
-
-.section-content-wrapper {
-  max-width: 1200px; /* Larghezza massima del contenuto, come sul sito ispirazione */
-  width: 100%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Allinea il contenuto a sinistra di default */
+  flex-direction: column; /* I titoli si impilano di default */
+  align-items: flex-start; /* Allineamento iniziale */
 }
 
 .section-title {
-  font-family: "Cascadia Code", sans-serif;
-  font-size: 10vw; /* Titoli grandi per le sezioni */
-  line-height: 0.9;
-  letter-spacing: -0.05em;
-  text-transform: uppercase;
-  color: var(--color-light-text);
-  width: 100%; /* Occupa tutta la larghezza per gli allineamenti */
+  font-family: var(--font-heading);
+  font-size: clamp(
+    3rem,
+    10vw,
+    7rem
+  ); /* Font size responsivo per titoli di sezione */
+  font-weight: 700;
+  margin: 0;
+  line-height: 1;
+  width: 100%; /* Ogni titolo occupa la larghezza completa */
 }
 
-.section-description {
-  font-family: "Cascadia Code", sans-serif;
-  font-size: 1.2vw;
-  /*line-height: 1.5;*/
-  color: var(--color-light-text);
-  margin-top: 2rem;
-  max-width: 40vw; /* Larghezza limitata per le descrizioni lunghe */
-}
-
-.text-right {
-  text-align: right;
-  align-self: flex-end;
-} /* Utility per testo a destra */
-.text-center {
-  text-align: center;
-  align-self: center;
-} /* Utility per testo al centro */
-.text-left {
+.text-left-align {
   text-align: left;
-  align-self: flex-start;
-} /* Utility per testo a sinistra */
+}
+.text-center-align {
+  text-align: center;
+}
+.text-right-align {
+  text-align: right;
+}
+
+/* Per Das Pritam, il testo della descrizione si allinea al centro in alcune sezioni */
+.section-description {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  line-height: 1.7;
+  max-width: 800px; /* Limita larghezza per leggibilità */
+  margin: var(--spacing-medium) auto 0 auto; /* Centra il paragrafo */
+  text-align: center; /* Allinea il testo all'interno del paragrafo centrato */
+  padding-top: var(--spacing-small);
+}
 
 /* --- SEZIONE SERVIZI --- */
-.services-layout {
-  flex-direction: row; /* Intro a sinistra, lista servizi a destra */
-  justify-content: space-between;
-  align-items: flex-start; /* Allinea gli elementi in alto */
-  flex-wrap: wrap; /* Permette agli elementi di andare a capo su schermi piccoli */
+.services-section {
+  background-color: var(--color-dark);
+  color: var(--color-light);
+}
+
+.services-grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Due colonne */
+  gap: var(--spacing-large);
+  align-items: center; /* Centra verticalmente gli elementi nella griglia */
 }
 
 .services-intro {
-  flex: 1; /* Prende spazio disponibile */
-  max-width: 35vw; /* Larghezza per l'introduzione */
-  margin-right: 2rem;
+  text-align: left;
 }
 
-.services-intro p {
-  font-family: "Cascadia Code", sans-serif;
-  font-size: 1vw;
-  line-height: 1.5;
-  color: var(--color-light-text);
+.glowing-word {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-light);
+  /* Per l'effetto glow, puoi aggiungere shadow o pseudo-elementi */
+  text-shadow: 0 0 5px var(--color-accent), 0 0 10px var(--color-accent),
+    0 0 15px var(--color-accent);
+  margin-bottom: var(--spacing-medium);
+  display: block; /* Assicura che sia un blocco per il margine */
 }
 
 .service-list {
-  flex: 2; /* Prende più spazio */
-  max-width: 55vw;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-medium);
 }
 
 .service-item {
   display: flex;
   align-items: center;
-  padding: 1.5rem 0;
-  border-bottom: 1px solid var(--color-border); /* Linea divisoria */
-}
-
-.service-item:last-child {
-  border-bottom: none; /* Rimuove la linea sull'ultimo elemento */
+  gap: var(--spacing-small);
 }
 
 .service-number {
-  font-family: "Cascadia Code", sans-serif;
-  font-size: 2rem;
-  font-weight: bold;
-  color: var(--color-accent);
-  margin-right: 2rem;
-  min-width: 30px; /* Larghezza fissa per i numeri */
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 800;
+  color: var(--color-accent); /* Colore d'accento per i numeri */
+  margin-right: 0.5rem;
 }
 
 .service-text {
-  font-family: "Cascadia Code", sans-serif;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--color-light-text);
-  text-transform: uppercase;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.5;
+  margin: 0;
 }
 
-/* --- SEZIONE PROGETTI --- */
+/* --- SEZIONE LAVORI --- */
+.works-section {
+  background-color: var(--color-dark);
+  color: var(--color-light);
+}
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(
     auto-fit,
     minmax(300px, 1fr)
   ); /* Colonne adattive */
-  gap: 3rem; /* Spazio tra le card */
-  width: 100%;
-  margin-top: 4rem;
+  gap: var(--spacing-medium);
+  margin-top: var(--spacing-large);
 }
 
 .project-card {
-  background-color: var(--color-medium-dark);
+  background-color: #1a1a1a; /* Sfondo leggermente più chiaro per le card */
   border-radius: 8px;
-  overflow: hidden; /* Nasconde ciò che esce dai bordi arrotondati */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-10px); /* Leggero sollevamento al hover */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  text-align: center;
+  padding-bottom: var(--spacing-medium);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Per posizionare il bottone in fondo */
 }
 
 .project-card img {
   width: 100%;
-  height: 250px; /* Altezza fissa per le immagini dei progetti */
-  object-fit: cover; /* Assicura che l'immagine copra l'area */
+  height: 250px; /* Altezza fissa per le immagini */
+  object-fit: cover; /* Assicura che le immagini coprano l'area */
   display: block;
+  margin-bottom: var(--spacing-small);
 }
 
 .project-card h3 {
-  font-family: "Cascadia Code", sans-serif;
-  font-size: 1.8rem;
-  color: var(--color-accent);
-  padding: 1.5rem 1.5rem 0.5rem;
-  text-transform: uppercase;
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  font-weight: 700;
+  margin: var(--spacing-small) 0;
+  color: var(--color-light);
+  padding: 0 var(--spacing-small);
 }
 
-.project-card a {
-  display: inline-block;
-  padding: 0.5rem 1.5rem 1.5rem;
-  color: var(--color-light-text);
-  font-family: "Roboto", monospace;
-  font-weight: bold;
+.project-card a.button {
+  /* Stili specifici per i bottoni delle card */
+  margin-top: auto; /* Spinge il bottone in fondo alla card flexbox */
 }
-.project-card a:hover {
-  color: var(--color-accent);
+
+/* --- SEZIONE CONTATTI --- */
+.contact-section {
+  background-color: var(--color-dark);
+  color: var(--color-light);
+}
+
+.section-centered-content {
+  /* Per sezioni con solo testo centrato e un bottone */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Per il contatto, potresti voler centrare i titoli in modo diverso */
+.contact-section .split-titles .section-title {
+  text-align: center;
+}
+
+.contact-section .section-description {
+  max-width: 600px; /* Testo più stretto per leggibilità */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.social-links {
+  margin-top: var(--spacing-large);
+  display: flex;
+  gap: var(--spacing-medium);
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-links a {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-light);
+  text-decoration: none;
+  border: 1px solid var(--color-light);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  background-color: var(--color-light);
+  color: var(--color-dark);
 }
 
 /* --- FOOTER --- */
 .footer {
-  background-color: var(--color-medium-dark);
-  color: var(--color-light-text);
   text-align: center;
-  padding: 2rem 4vw;
-  font-family: "Roboto", monospace;
+  padding: var(--spacing-small);
+  background-color: #111; /* Sfondo del footer leggermente diverso */
+  color: #777;
   font-size: 0.9rem;
 }
 
-.social-links {
-  margin-top: 3rem;
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  text-transform: uppercase;
-  font-family: "Roboto", monospace;
-}
-.social-links a {
-  font-size: 1.1rem;
-  font-weight: bold;
-}
-
-/* --- RESPONSIVITÀ (Media Queries) --- */
-@media (max-width: 1024px) {
-  /* Per schermi tablet e laptop più piccoli */
-  .hero-section {
-    padding: 6vh 6vw;
-  }
-  .main-title {
-    font-size: 15vw;
-  }
-  .subtitle {
-    font-size: 2vw;
-    text-align: left; /* Allinea a sinistra sui tablet */
-    margin-top: 2rem;
-  }
-  .header-description {
-    max-width: 60vw;
-    margin-top: 5vh;
-    align-self: flex-start;
-  }
-  .header-description p {
-    font-size: 1.5vw;
-  }
-  .button {
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
-  }
-
-  .section-title {
-    font-size: 13vw;
-  }
-  .section-description {
-    font-size: 1.8vw;
-    max-width: 60vw;
-  }
-
-  .services-layout {
-    flex-direction: column; /* Impila su tablet */
-    align-items: center;
-    text-align: center;
-  }
-  .services-intro {
-    max-width: 80vw;
-    margin-right: 0;
-    margin-bottom: 3rem;
-  }
-  .services-intro p {
-    font-size: 1.8vw;
-  }
-  .service-list {
-    max-width: 80vw;
-  }
-  .service-item {
-    justify-content: center;
-  }
-}
-
+/* --- MEDIA QUERIES (Per la Responsività) --- */
 @media (max-width: 768px) {
-  /* Per schermi mobile */
-  .hero-section,
-  .section-full-height,
-  .section-half-height,
-  .section-centered {
-    padding: 5vh 5vw;
+  .section {
+    padding: var(--spacing-small); /* Riduci padding su schermi piccoli */
   }
 
-  .main-title {
-    font-size: 18vw;
-    text-align: center;
-  }
-  .subtitle {
-    font-size: 3vw;
-    text-align: center;
-  }
-  .header-description {
-    max-width: 90vw;
-    align-self: center;
-    text-align: center;
-  }
-  .header-description p {
-    font-size: 3.5vw;
+  .section-content-wrapper {
+    padding: 0 var(--spacing-small);
   }
 
+  /* Header / Hero Section */
+  .hero-layout {
+    flex-direction: column; /* Le colonne della header si impilano */
+    gap: var(--spacing-medium);
+    text-align: center; /* Centra il testo quando impilato */
+  }
+
+  .hero-left-col,
+  .hero-right-col {
+    text-align: center; /* Allinea il testo al centro su schermi piccoli */
+  }
+
+  /* Titoli di sezione (CREATE, UNIQUE, EXPERIENCE ecc.) */
+  .split-titles {
+    flex-direction: column; /* Assicura che i titoli si impilino */
+    align-items: center; /* Centra i titoli */
+  }
   .section-title {
-    font-size: 16vw;
-    text-align: center !important; /* Forza allineamento centrale su mobile */
-    align-self: center !important;
+    text-align: center !important; /* Forza la centratura dei titoli su mobile */
+    font-size: clamp(2.5rem, 12vw, 5rem); /* Riduci la dimensione su mobile */
   }
+
   .section-description {
-    font-size: 4vw;
-    max-width: 90vw;
-    text-align: center !important;
-    align-self: center !important;
+    text-align: center; /* Assicurati che le descrizioni siano centrate */
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  .services-intro p {
-    font-size: 4vw;
-  }
-  .service-number {
-    font-size: 1.5rem;
-    margin-right: 1rem;
-  }
-  .service-text {
-    font-size: 1.2rem;
+  /* Sezione Servizi */
+  .services-grid-layout {
+    grid-template-columns: 1fr; /* Una singola colonna per i servizi */
   }
 
-  .projects-grid {
-    grid-template-columns: 1fr; /* Una singola colonna per mobile */
-    gap: 2rem;
+  .services-intro {
+    text-align: center;
   }
 
-  .social-links {
-    flex-direction: column;
-    gap: 1rem;
+  .service-item {
+    justify-content: center; /* Centra i numeri e il testo del servizio */
   }
 }
 
 @media (max-width: 480px) {
-  /* Piccoli schermi mobile */
   .main-title {
-    font-size: 20vw;
+    font-size: clamp(
+      3rem,
+      15vw,
+      6rem
+    ); /* Ulteriore riduzione per schermi molto piccoli */
   }
   .subtitle {
-    font-size: 4vw;
-  }
-  .header-description p {
-    font-size: 4.5vw;
-  }
-  .section-title {
-    font-size: 18vw;
-  }
-  .section-description {
-    font-size: 5vw;
-  }
-  .services-intro p {
-    font-size: 5vw;
-  }
-  .service-text {
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 4vw, 1.2rem);
   }
   .button {
+    padding: 0.7rem 1.5rem;
     font-size: 0.9rem;
+  }
+  .social-links {
+    gap: var(--spacing-small);
   }
 }

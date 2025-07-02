@@ -1,5 +1,3 @@
-<!-- V0.02 init-->
-
 ### **Who I am?**
 
 - I'm **Franesco Rogo**, an Italian Back-End Developer
