@@ -422,84 +422,102 @@ p {
 /* Stili per il contenitore dell'animazione */
 /* Stili per il contenitore dell'animazione */
 .word-animation-container {
-  --tempo-animazione: 8s;
+  /* Imposta la durata totale di un ciclo completo dell'animazione per tutte le parole. */
+  /* (Numero di parole * ritardo per parola) = (11 * 2s) = 22s */
+  --tempo-animazione: 22s; /* CORRETTO */
 
   display: flex;
-  justify-content: center;
+  /* justify-content: right; */ /* Questo non ha effetto sugli elementi assoluti */
   align-items: center;
 
   height: 100px;
-  overflow: hidden;
+  overflow: hidden; /* Fondamentale per nascondere le parole quando entrano/escono */
   font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 3em;
   font-weight: 500;
-
   color: var(--color-light-text);
-  /* position: relative; /* Mantieni questo se vuoi i span assoluti al suo interno */
 
-  margin-top: 0px; /* Aggiungi spazio sopra il div */
-  margin-bottom: 30px; /* Aggiungi spazio sotto il div (opzionale) */
+  position: relative; /* CRUCIALE: Rendi il contenitore un punto di riferimento per gli elementi assoluti */
 
-  border-left: 10px;
-  border-right: 100px;
+  margin-top: 20px;
+  margin-bottom: 190px;
+  margin-left: 1vw;
+  margin-right: 1vw;
+
+  /* Rimuovi border-left e border-right se sono 10px e 20px senza unità o stile */
+  /* border-left: 10px solid transparent; */
+  /* border-right: 20px solid transparent; */
+
   max-width: 800px;
 
   background-color: var(--color-dark);
   border-radius: 10px;
 
-  left: 20%; /* Inizia a metà del genitore */
-  /* Sposta a sinistra della metà della sua larghezza per centrarlo */
-  transform: translateX(0%);
-
-  /* Posiziona rispetto al TOP (o BOTTOM) del genitore.
-     Dovrai trovare il valore giusto in base all'altezza della scritta sopra. */
-  top: 180px; /* Esempio: 300px dal top del suo genitore relativo */
-  /* Oppure, puoi usare bottom: Xpx; se preferisci posizionare dal basso */
+  /* Questi stili posizionano il CONTENITORE, non le parole interne.
+     Se il contenitore deve essere centrato, dovresti usare:
+     left: 50%;
+     transform: translateX(-50%);
+     Se deve essere allineato a destra:
+     margin-left: auto;
+     margin-right: 1vw;
+  */
+  /* top: 180px;  Mantieni o rimuovi a seconda del layout desiderato del contenitore */
 }
 
 /* Stili per ciascuna parola */
 .word-item {
   position: absolute; /* Per sovrapporre le parole nello stesso spazio */
   opacity: 0; /* Inizialmente nascosto */
-  transform: translateY(50%); /* Inizialmente sotto il contenitore */
-  animation: wordSlideInOut var(--tempo-animazione) infinite; /* Nome animazione, durata totale, ripeti all'infinito */
+  transform: translateY(100%); /* Inizialmente sotto il contenitore */
+  animation: wordSlideInOut var(--tempo-animazione) infinite;
   animation-fill-mode: both; /* Assicura che l'animazione mantenga il suo stato anche prima del delay */
   white-space: nowrap; /* Evita che la parola vada a capo */
   text-transform: uppercase; /* Tutto maiuscolo */
+
+  /* Per allineare le parole a destra all'interno del contenitore */
+  right: 0; /* Allinea l'elemento al bordo destro del suo contenitore relativo */
+  text-align: right; /* Allinea il testo all'interno dell'elemento a destra */
+  width: 100%; /* Assicurati che l'elemento occupi la larghezza del contenitore per far funzionare text-align */
+  box-sizing: border-box; /* Include padding e border nella larghezza se ne hai */
+  padding-right: 20px; /* Aggiungi un po' di padding per non far attaccare il testo al bordo */
 }
 
 /* Definizione dell'animazione per le parole */
 @keyframes wordSlideInOut {
   /* FASE 1: Entrata (dal basso, con fade-in) */
+  /* 0% - 1.04% (0s - 0.25s): Entra in 0.25 secondi */
+
   0% {
     opacity: 0;
-    transform: translateY(100%); /* Inizia sotto il contenitore */
+    transform: translateY(100%); /* Inizia sotto */
   }
-  3.57% {
-    /* (0.5s di transizione in / 14s totale) * 100% = circa 3.57% */
+  1.13% {
+    /* 0.25s / 24s = 1.04% */
     opacity: 1;
-    transform: translateY(0); /* Entra a metà contenitore */
+    transform: translateY(0); /* Entra a metà */
   }
 
   /* FASE 2: Mantenimento (visibile al centro) */
-  10.71% {
-    /* (0.5s di transizione in + 1.0s di visibilità) / 14s totale = circa 10.71% */
+  /* 1.13% - 7.95% (0.25s - 1.75s): Rimane visibile per 1.5 secondi */
+  7.95% {
+    /* (0.25s + 1.5s) / 24s = 7.29% */
     opacity: 1;
     transform: translateY(0); /* Rimane visibile */
   }
 
   /* FASE 3: Uscita (verso l'alto, con fade-out) */
-  14.28% {
-    /* (0.5s in + 1.0s visibile + 0.5s out) / 14s totale = circa 14.28% */
+  /* 7.95% - 9% (1.75s - 2.0s): Esce in 0.25 secondi */
+  9% {
+    /* (0.25s + 1.5s + 0.25s) / 24s = 8.33% */
     opacity: 0;
-    transform: translateY(-100%); /* Esce sopra il contenitore */
+    transform: translateY(-100%); /* Esce sopra */
   }
 
   /* FASE 4: Riposizionamento istantaneo (per un loop pulito) */
-  /* Questa è la parte CRUCIALE per risolvere la sovrapposizione/salto */
-  /* Subito dopo essere uscita, la parola torna sotto, invisibile, pronta per il prossimo ciclo */
-  14.29% {
-    /* Appena dopo la fine della fase di uscita */
+  /* Subito dopo essere uscita, la parola torna sotto, invisibile, pronta per il prossimo ciclo. */
+  /* Questo passaggio è cruciale per evitare "salti" o sfarfallii nel loop. */
+  9.1% {
+    /* Un tick dopo la fine dell'uscita */
     opacity: 0;
     transform: translateY(
       100%
@@ -507,6 +525,7 @@ p {
   }
 
   /* FASE 5: Attesa (la parola rimane invisibile e sotto fino al prossimo ciclo) */
+  /* 8.34% - 100%: La parola attende il suo turno per il ciclo successivo. */
   100% {
     opacity: 0;
     transform: translateY(
@@ -516,7 +535,9 @@ p {
 }
 
 /* Regole per il ritardo di ciascuna parola */
-/* L'incremento del ritardo è di 2 secondi per parola */
+/* L'incremento del ritardo è di 2 secondi per parola,
+   e la durata totale dell'animazione (24s) è un multiplo di questo,
+   garantendo un loop continuo. */
 .word-item:nth-child(1) {
   animation-delay: 0s;
 }
@@ -526,6 +547,32 @@ p {
 .word-item:nth-child(3) {
   animation-delay: 4s;
 }
+.word-item:nth-child(4) {
+  animation-delay: 6s;
+}
+.word-item:nth-child(5) {
+  animation-delay: 8s;
+}
+.word-item:nth-child(6) {
+  animation-delay: 10s;
+}
+.word-item:nth-child(7) {
+  animation-delay: 12s;
+}
+.word-item:nth-child(8) {
+  animation-delay: 14s;
+}
+.word-item:nth-child(9) {
+  animation-delay: 16s;
+}
+.word-item:nth-child(10) {
+  animation-delay: 18s;
+}
+.word-item:nth-child(11) {
+  animation-delay: 20s;
+}
+/* L'ultima parola inizia il suo ciclo all'inizio del ciclo totale */
+
 /* Aggiungi altri nth-child() con ritardi crescenti se hai più parole */
 
 /* Media Queries per la Responsività (mantienile come sono o adatta) */
