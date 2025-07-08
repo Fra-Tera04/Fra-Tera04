@@ -41,6 +41,10 @@
   box-sizing: border-box; /* Include padding e border nella dimensione dell'elemento */
 }
 
+canvas {
+  display: block;
+}
+
 html {
   scroll-behavior: smooth; /* Good Practice: Scrolling fluido per i link interni */
 }
@@ -50,7 +54,11 @@ body {
   background-color: var(--color-dark);
   color: var(--color-light-text);
   line-height: 1.6; /* Good Practice: Migliora la leggibilità dei paragrafi */
+
   overflow-x: hidden; /* Evita scroll orizzontali non desiderati su mobile */
+
+  margin: 0;
+  height: 100vh;
 }
 
 /* Stili per link */
@@ -348,12 +356,6 @@ p {
   margin-bottom: 1vw;
   margin-right: 3vw;
   margin-left: -3vw;
-  /*
-  padding-top: 1px;
-  padding-bottom: 2px;
-  padding-right: 3px;
-  padding-left: 8px;
-  */
 }
 
 .ultimi {
@@ -361,13 +363,6 @@ p {
   margin-bottom: 1vw;
   margin-right: 10vw;
   margin-left: 3vw;
-
-  /*
-  padding-top: 1px;
-  padding-right: 1;
-  padding-bottom: 1px;
-  padding-left: 5px;
-  */
 }
 
 .lavori {
@@ -375,13 +370,6 @@ p {
   margin-bottom: 1vw;
   margin-right: 1vw;
   margin-left: 1vw;
-
-  /*
-  padding-top: 1px;
-  padding-right: 8px;
-  padding-bottom: 5px;
-  padding-left: 30px;
-  */
 }
 
 .lasciamo {
@@ -426,6 +414,138 @@ p {
   line-height: 1.5;
   color: var(--color-light-text);
 }
+
+/* Stili per il contenitore dell'animazione */
+/* Stili per il contenitore dell'animazione */
+/* Stili per il contenitore dell'animazione */
+/* Stili per il contenitore dell'animazione */
+/* Stili per il contenitore dell'animazione */
+/* Stili per il contenitore dell'animazione */
+.word-animation-container {
+  --tempo-animazione: 8s;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100px;
+  overflow: hidden;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 3em;
+  font-weight: 500;
+
+  color: var(--color-light-text);
+  /* position: relative; /* Mantieni questo se vuoi i span assoluti al suo interno */
+
+  margin-top: 0px; /* Aggiungi spazio sopra il div */
+  margin-bottom: 30px; /* Aggiungi spazio sotto il div (opzionale) */
+
+  border-left: 10px;
+  border-right: 100px;
+  max-width: 800px;
+
+  background-color: var(--color-dark);
+  border-radius: 10px;
+
+  left: 20%; /* Inizia a metà del genitore */
+  /* Sposta a sinistra della metà della sua larghezza per centrarlo */
+  transform: translateX(0%);
+
+  /* Posiziona rispetto al TOP (o BOTTOM) del genitore.
+     Dovrai trovare il valore giusto in base all'altezza della scritta sopra. */
+  top: 180px; /* Esempio: 300px dal top del suo genitore relativo */
+  /* Oppure, puoi usare bottom: Xpx; se preferisci posizionare dal basso */
+}
+
+/* Stili per ciascuna parola */
+.word-item {
+  position: absolute; /* Per sovrapporre le parole nello stesso spazio */
+  opacity: 0; /* Inizialmente nascosto */
+  transform: translateY(50%); /* Inizialmente sotto il contenitore */
+  animation: wordSlideInOut var(--tempo-animazione) infinite; /* Nome animazione, durata totale, ripeti all'infinito */
+  animation-fill-mode: both; /* Assicura che l'animazione mantenga il suo stato anche prima del delay */
+  white-space: nowrap; /* Evita che la parola vada a capo */
+  text-transform: uppercase; /* Tutto maiuscolo */
+}
+
+/* Definizione dell'animazione per le parole */
+@keyframes wordSlideInOut {
+  /* FASE 1: Entrata (dal basso, con fade-in) */
+  0% {
+    opacity: 0;
+    transform: translateY(100%); /* Inizia sotto il contenitore */
+  }
+  3.57% {
+    /* (0.5s di transizione in / 14s totale) * 100% = circa 3.57% */
+    opacity: 1;
+    transform: translateY(0); /* Entra a metà contenitore */
+  }
+
+  /* FASE 2: Mantenimento (visibile al centro) */
+  10.71% {
+    /* (0.5s di transizione in + 1.0s di visibilità) / 14s totale = circa 10.71% */
+    opacity: 1;
+    transform: translateY(0); /* Rimane visibile */
+  }
+
+  /* FASE 3: Uscita (verso l'alto, con fade-out) */
+  14.28% {
+    /* (0.5s in + 1.0s visibile + 0.5s out) / 14s totale = circa 14.28% */
+    opacity: 0;
+    transform: translateY(-100%); /* Esce sopra il contenitore */
+  }
+
+  /* FASE 4: Riposizionamento istantaneo (per un loop pulito) */
+  /* Questa è la parte CRUCIALE per risolvere la sovrapposizione/salto */
+  /* Subito dopo essere uscita, la parola torna sotto, invisibile, pronta per il prossimo ciclo */
+  14.29% {
+    /* Appena dopo la fine della fase di uscita */
+    opacity: 0;
+    transform: translateY(
+      100%
+    ); /* Torna sotto il contenitore istantaneamente */
+  }
+
+  /* FASE 5: Attesa (la parola rimane invisibile e sotto fino al prossimo ciclo) */
+  100% {
+    opacity: 0;
+    transform: translateY(
+      100%
+    ); /* Assicura che rimanga sotto fino al prossimo 0% */
+  }
+}
+
+/* Regole per il ritardo di ciascuna parola */
+/* L'incremento del ritardo è di 2 secondi per parola */
+.word-item:nth-child(1) {
+  animation-delay: 0s;
+}
+.word-item:nth-child(2) {
+  animation-delay: 2s;
+}
+.word-item:nth-child(3) {
+  animation-delay: 4s;
+}
+/* Aggiungi altri nth-child() con ritardi crescenti se hai più parole */
+
+/* Media Queries per la Responsività (mantienile come sono o adatta) */
+@media (max-width: 768px) {
+  .word-animation-container {
+    height: 150px;
+    font-size: 2.2em;
+  }
+}
+
+@media (max-width: 480px) {
+  .word-animation-container {
+    height: 120px;
+    font-size: 1.5em;
+  }
+}
+/* FINE Stili per il contenitore dell'animazione */
+/* FINE Stili per il contenitore dell'animazione */
+/* FINE Stili per il contenitore dell'animazione */
+/* FINE Stili per il contenitore dell'animazione */
 
 /*///////////////////////////////////////////////////////////////////////////////////////////*/
 .gradient-text {
