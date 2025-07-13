@@ -18,8 +18,10 @@
 /* Good Practice: Rendono il tema facilmente modificabile e consistente */
 :root {
   --color-dark: #000000; /* Colore di sfondo principale */
+  --color-grigio-dark: #111;
   --color-medium-dark: #050505; /* Per elementi come il footer o card projects */
   --color-light-text: #f0f0f0; /* Colore principale del testo chiaro */
+  --color-binaco-spento: #777;
   --color-accent: #00a3b3; /* Blu/ciano, come su daspritam.in */
   --color-border: #411; /* Colore per linee e divisori sottili */
 
@@ -488,10 +490,12 @@ p {
 /* --- FOOTER --- */
 
 .footer {
-  background-color: var(--color-medium-dark);
-  color: var(--color-light-text);
+  background-color: var(
+    --color-grigio-dark
+  ); /* Sfondo del footer leggermente diverso */
+  color: var(--color-binaco-spento);
   text-align: center;
-  padding: var(--spacing-large) 4vw;
+  padding: var(--spacing-medium) 4vw;
   font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 0.9rem;
   border-top: 1px solid var(--color-border); /* Linea sottile sopra il footer */

@@ -118,12 +118,21 @@ Ogni readme deve avere queste cose!
 
 ---- sito web ----
 
-controlla i consigli di gemini
-at https://gemini.google.com/app/64829618e0c3e815?hl=it
+2.0
+- add to 'services for my clients' https://prismic.io/blog/css-text-animations#31-the-aurora
 
-palete color per il sito web: Coolors.co
-font-family: https://fonts.google.com/
+- add botton animation: https://prismic.io/blog/css-animation-examples#button-animations
 
+- add animation loader: https://prismic.io/blog/css-animation-examples#20-kinetic-css-loaders
+
+- add card effects:
+  (1) https://prismic.io/blog/css-hover-effects#1-holographic-card
+
+  (2)
+
+- add social links: https://prismic.io/blog/css-hover-effects#20-text-and-gradient-icon-hover-effect
+
+1.0
 vorrei creare un website portfolio come quello di https://www.daspritam.in/
 -->
 
