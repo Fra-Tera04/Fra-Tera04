@@ -1,3 +1,4 @@
+<!-- V0.02 init-->
 
 ### **Who I am?**
 
@@ -38,5 +39,4 @@
 ## How to reach me?
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-darkblue)](https://www.linkedin.com/in/francesco-rogo/)
-[![Email](https://img.shields.io/badge/Email-darkgreen)](https://mail.google.com/mail/?view=cm&fs=1&to=francescorogo22@gmail.com&su=[From%20GitHub]%20Il-Tuo-Messaggio&body=)
-[![Il_Mio_Sito](https://img.shields.io/badge/Il_Mio_Sito-darkred)](https://fra-tera04.github.io/Fra-Tera04/)
+[![Email](https://img.shields.io/badge/Email-darkgreen)](https://mail.google.com/mail/?view=cm&fs=1&to=francescorogo22@gmail.com&su=[From%20GitHub]%20IlTuoMessaggio&body=)
