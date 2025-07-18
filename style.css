@@ -1,0 +1,1641 @@
+/* style.css */
+/* style.css */
+
+@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@400;500;700;800&family=Cascadia+Code&display=swap");
+
+/* --- VARIABILI CSS (Custom Properties) --- */
+:root {
+  --color-dark: #000000;
+  /* Colore di sfondo principale */
+  --color-medium-dark: #100001;
+  /* Per elementi come il footer o card projects */
+  --color-grigio-dark: #111;
+  --color-light-text: #f0f0f0;
+  /* Colore principale del testo chiaro */
+  --color-binaco-spento: #777;
+  --color-accent: #00a3b3;
+  /* Blu/ciano, come su daspritam.in */
+  --color-border: #411;
+  /* Colore per linee e divisori sottili */
+
+  --font-titolo: "Alegreya Sans SC", sans-serif;
+  --font-text: "Cascadia Code", sans-serif;
+
+  /* Aggiungi i colori della tua palette se non li hai già qui */
+  --blue: #2d00f7ff;
+  --electric-indigo: #6a00f4ff;
+  --violet: #8900f2ff;
+  --veronica: #a100f2ff;
+  --veronica-2: #b100e8ff;
+  --electric-purple: #bc00ddff;
+  --steel-pink: #d100d1ff;
+  --steel-pink-2: #db00b6ff;
+  --hollywood-cerise: #e500a4ff;
+  --magenta: #f20089ff;
+
+  /* bottone sheen */
+  --lith-sheen: linear-gradient(to bottom,
+      transparent,
+      var(--color-accent),
+      var(--color-light-text),
+      var(--color-accent),
+      transparent);
+  --sheen-highlight-color: rgba(255,
+      255,
+      255,
+      0.8);
+  /* Un bianco leggermente trasparente per un look "riflesso" */
+
+  /* Spaziature base (usando rem per scalare) */
+  --spacing-small: 1rem;
+  /* 16px */
+  --spacing-medium: 2rem;
+  /* 32px */
+  --spacing-large: 4rem;
+  /* 64px */
+  --spacing-xl: 6rem;
+  /* 96px */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* Include padding e border nella dimensione dell'elemento */
+}
+
+canvas {
+  display: block;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Good Practice: Scrolling fluido per i link interni */
+}
+
+body {
+  height: 100vh;
+  background-size: 400% 100%;
+
+  font-family: var(--font-titolo);
+  background-color: var(--color-dark);
+  color: var(--color-light-text);
+  line-height: 1.6em;
+  /* Good Practice: Migliora la leggibilità dei paragrafi */
+
+  overflow-x: hidden;
+  /* Evita scroll orizzontali non desiderati su mobile */
+
+  margin: 0;
+}
+
+/* ----------------------------- */
+
+/* Stili per link */
+a {
+  color: var(--color-light-text);
+  text-decoration: none;
+  /* Rimuove la sottolineatura di default */
+  transition: color 0.3s ease;
+  /* Effetto di transizione al passaggio del mouse */
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+/* Stili per i titoli (per rimuovere margini predefiniti) */
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Bottone generico */
+.button {
+  display: inline-block;
+  /* Permette padding/margin verticali e sta sulla stessa riga */
+  padding: 0.5rem;
+  margin-top: var(--spacing-medium);
+  /* Spazio sopra il bottone */
+  background-color: var(--color-accent);
+  color: var(--color-dark);
+  /* Testo scuro sul bottone accento */
+  font-family: var(--font-text);
+  font-weight: 700;
+  /* Grassetto per il bottone */
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1rem;
+  border-radius: 5px;
+  /* Bordi leggermente arrotondati */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #008fa3;
+  /* Tonalità leggermente più scura al hover */
+  color: var(--color-light-text);
+}
+
+/* Wrapper per il contenuto centrale delle sezioni */
+.section-content-wrapper {
+  max-width: 1200px;
+  /* Limita la larghezza del contenuto */
+  width: 100%;
+  /* Occupa tutta la larghezza disponibile all'interno del max-width */
+  margin: 0 auto;
+  /* Centra orizzontalmente il wrapper */
+  display: flex;
+  flex-direction: column;
+  /* Contenuto impilato per default */
+  align-items: flex-start;
+  /* Allinea il contenuto a sinistra di default */
+}
+
+/**
+	preloader--8
+  FROM https://prismic.io/blog/css-animation-examples#20-kinetic-css-loaders
+**/
+.loader--8 {
+  --loader-size: calc(var(--block-size) / 3);
+  --anim-duration: 0.8s;
+  aspect-ratio: 1 / 1;
+  border: 1px dashed var(--light-color);
+  border-radius: 50%;
+  perspective: 50vmin;
+  transform-style: preserve-3d;
+  transform: rotateX(45deg) rotateY(15deg);
+}
+
+.loader--8::before,
+.loader--8::after {
+  animation: loader-8 var(--anim-duration) cubic-bezier(0.39, 0.24, 0, 0.99) infinite;
+}
+
+.loader--8::before {
+  --z-dist: 8vmin;
+  width: var(--dot-size);
+  aspect-ratio: 1 / 1;
+  background: currentColor;
+  border-radius: 50%;
+  top: calc(50% - var(--dot-size-half));
+  left: calc(50% - var(--dot-size-half));
+  animation-delay: calc(var(--anim-duration) / 4 * -1);
+}
+
+.loader--8::after {
+  --z-dist: 4vmin;
+  width: 65%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+}
+
+@keyframes loader-8 {
+
+  0%,
+  100% {
+    transform: translateZ(calc(var(--z-dist) * -1)) scale(0.6);
+  }
+
+  55% {
+    transform: translateZ(var(--z-dist));
+  }
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2025-7-9 10:35:17
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info.
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+.text-shadow-drop-bottom {
+  -webkit-animation: text-shadow-drop-bottom 3s ease-out infinite alternate both;
+  animation: text-shadow-drop-bottom 3s ease-out infinite alternate both;
+}
+
+@-webkit-keyframes text-shadow-drop-bottom {
+  0% {
+    text-shadow: 0 0 0 transparent;
+  }
+
+  100% {
+    text-shadow: 6px 18px 30px rgba(255, 0, 0, 0.55);
+  }
+}
+
+@keyframes text-shadow-drop-bottom {
+  0% {
+    text-shadow: 0 0 0 transparent;
+  }
+
+  100% {
+    text-shadow: 6px 18px 30px rgba(0, 0, 225, 0.35);
+  }
+}
+
+.text-shadow-pop-bl {
+  -webkit-animation: text-shadow-pop-bl 2s cubic-bezier(0.23, 1, 0.32, 1) infinite alternate both;
+  animation: text-shadow-pop-bl 2s cubic-bezier(0.23, 1, 0.32, 1) infinite alternate both;
+}
+
+@-webkit-keyframes text-shadow-pop-bl {
+  0% {
+    text-shadow: 0 0 #555555, 0 0 #555555, 0 0 #555555, 0 0 #555555, 0 0 #555555,
+      0 0 #555555, 0 0 #555555, 0 0 #555555;
+    -webkit-transform: translateX(0) translateY(0);
+    transform: translateX(0) translateY(0);
+  }
+
+  100% {
+    text-shadow: -1px 1px red, -2px 2px red, -3px 3px red, -4px 4px orangered,
+      -5px 5px orangered, -6px 6px orangered, -7px 7px orange, -8px 8px orange;
+    -webkit-transform: translateX(8px) translateY(-8px);
+    transform: translateX(8px) translateY(-8px);
+  }
+}
+
+@keyframes text-shadow-pop-bl {
+  0% {
+    text-shadow: 0 0 #555555, 0 0 #555555, 0 0 #555555, 0 0 #555555, 0 0 #555555,
+      0 0 #555555, 0 0 #555555, 0 0 #555555;
+    -webkit-transform: translateX(0) translateY(0);
+    transform: translateX(0) translateY(0);
+  }
+
+  100% {
+    text-shadow: -1px 1px red, -2px 2px red, -3px 3px red, -4px 4px orangered,
+      -5px 5px orangered, -6px 6px orangered, -7px 7px orange, -8px 8px orange;
+    -webkit-transform: translateX(8px) translateY(-8px);
+    transform: translateX(8px) translateY(-8px);
+  }
+}
+
+/* Stili per gli elementi allineati in alto (.top-aligned-elements) */
+.top-aligned-elements {
+  position: absolute;
+  /* Posiziona questo div rispetto al suo genitore (.hero-section) */
+  top: 0;
+  /* Allinea al bordo superiore del genitore */
+  left: 0;
+  /* Allinea al bordo sinistro del genitore */
+  width: 100%;
+  /* Occupa tutta la larghezza del genitore */
+  display: flex;
+  /* Attiva Flexbox per i suoi figli */
+  justify-content: space-between;
+  /* Spinge gli elementi a sinistra, centro e destra */
+  align-items: center;
+  /* Centra verticalmente gli elementi al suo interno */
+  padding: 1rem var(--spacing-medium);
+  /* Padding interno per non far toccare i bordi */
+  box-sizing: border-box;
+  /* Include padding nel calcolo della larghezza */
+  z-index: 10;
+  /* Assicura che sia sopra gli altri elementi se ce ne sono */
+}
+
+.top-item-left,
+.top-item-center,
+.top-item-right {
+  /* Stili di base per i contenitori delle parole */
+  padding: 0.5rem 1rem;
+  /* Padding interno per le singole parole */
+  opacity: 0.5;
+  /* Rende la parola opaca al 50% */
+}
+
+.top-item-left:hover,
+.top-item-center:hover,
+.top-item-right:hover {
+  opacity: 1;
+}
+
+.top-item-center {
+  flex-grow: 1;
+  /* Permette al div centrale di espandersi */
+  text-align: center;
+  /* Centra il testo al suo interno */
+}
+
+.small-text {
+  font-family: var(--font-text);
+  font-size: 0.9rem;
+  /* Dimensione piccola per il testo */
+  color: var(--color-light-text);
+  /* Corretto: da var(--color-light) a var(--color-light-text) */
+  margin: 0;
+  /* Rimuove i margini predefiniti del paragrafo */
+  white-space: nowrap;
+  /* Impedisce che il testo vada a capo */
+  text-transform: uppercase;
+  /* Rende il testo maiuscolo */
+  letter-spacing: 0.05em;
+  /* Spaziatura tra le lettere */
+}
+
+/* Classi utility per allineamento testo (sovrascrivono align-items del wrapper) */
+.text-left {
+  text-align: left;
+  align-self: flex-start;
+}
+
+.text-right {
+  text-align: right;
+  align-self: flex-end;
+}
+
+.text-center {
+  text-align: center;
+  align-self: center;
+}
+
+/* --- LAYOUT SEZIONI (FULL-HEIGHT, HALF-HEIGHT, CENTERED) --- */
+
+.hero-section,
+.section-full-height,
+.section-centered {
+  min-height: 100vh;
+  /* Occupano l'altezza completa della viewport */
+  background-color: var(--color-dark);
+  display: flex;
+  /* Usiamo Flexbox per centrare il contenuto */
+  justify-content: center;
+  /* Centra orizzontalmente i figli */
+  align-items: center;
+  /* Centra verticalmente i figli */
+  padding: 4vh 4vw;
+  /* Padding responsivo sui bordi */
+  box-sizing: border-box;
+  /* Da notare: hero-section avrà un layout Flexbox diverso al suo interno */
+}
+
+.section-half-height {
+  min-height: 50vh;
+  /* Sezione che occupa metà altezza */
+  background-color: var(--color-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4vh 4vw;
+  box-sizing: border-box;
+}
+
+/* La sezione contatti sarà sempre centrata verticalmente e orizzontalmente */
+.section-centered {
+  min-height: 80vh;
+  /* Un po' meno alta per il footer */
+  text-align: center;
+  /* Allinea il testo centralmente */
+  /* Impostazioni di Flexbox già date sopra la centreranno */
+}
+
+.section-centered .section-content-wrapper {
+  align-items: center;
+  /* Sovrascrive per centrare i contenuti in questa specifica sezione */
+}
+
+/* --- HERO SECTION STILI SPECIFICI --- */
+.hero-section {
+  justify-content: space-between;
+  /* Spinge il contenuto in alto e la descrizione in basso */
+  flex-direction: column;
+  /* Dispone i figli in colonna */
+  align-items: flex-start;
+  /* Allinea gli elementi a sinistra */
+  padding: 6vh 6vw;
+  /* Padding più generoso per la hero */
+  position: relative;
+  /* Aggiunto per permettere il posizionamento assoluto di .creative-dev-section */
+  overflow: hidden;
+  /* Nasconde elementi che escono dal contenitore */
+}
+
+.hero-main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-grow: 1;
+  /* Permette di occupare lo spazio disponibile */
+  justify-content: space-between;
+  width: 100%;
+  /* Occupa tutta la larghezza disponibile */
+}
+
+.header-content {
+  margin-top: 5vh;
+  /* Spazio dall'alto per i titoli */
+  margin-bottom: 2vh;
+}
+
+.main-title {
+  font-family: var(--font-titolo);
+  font-size: 12vw;
+  /* Dimensione responsiva enorme per i titoli */
+  font-weight: 400;
+  line-height: 0.9em;
+  /* Avvicina le righe per un aspetto compatto */
+  letter-spacing: -0.05em;
+  /* Avvicina leggermente le lettere */
+  text-transform: uppercase;
+  color: var(--color-light-text);
+  /* L'allineamento è lasciato a default (left) o gestito da specifiche classi HTML */
+}
+
+.subtitle {
+  font-family: var(--font-text);
+  font-size: 1.5vw;
+  /* Sottotitolo responsivo */
+  font-weight: 200;
+  color: var(--color-accent);
+  margin-top: 1.5rem;
+  text-transform: uppercase;
+  align-self: flex-end;
+  /* Allinea solo questo elemento a destra */
+}
+
+.header-description {
+  max-width: 30vw;
+  /* Limita la larghezza del paragrafo descrittivo */
+  margin-bottom: 5vh;
+  /* Spazio dal basso */
+  align-self: flex-start;
+  /* Allinea a sinistra */
+}
+
+.header-description p {
+  font-family: var(--font-text);
+  font-size: 1.1vw;
+  /* Testo piccolo e responsivo per la descrizione */
+  line-height: 1.5em;
+  text-align: justify;
+  /* Giustifica il testo */
+  color: var(--color-light-text);
+}
+
+/* NUOVI STILI PER LA SEZIONE "CREATIVE DEV" */
+.creative-dev-section {
+  position: absolute;
+  /* Posiziona rispetto a .hero-section */
+  top: 70%;
+  /* Inizia a metà dell'altezza */
+  right: 2vw;
+  /* Allinea a destra, con lo stesso padding del main content */
+  transform: translateY(-20%);
+  /* Centra verticalmente */
+  text-align: right;
+  /* Allinea il testo a destra */
+  z-index: 5;
+  /* Assicura che sia sotto il contenuto principale se necessario (regola a seconda dell'effetto) */
+  pointer-events: none;
+  /* Permette che i click passino attraverso questo elemento */
+  opacity: 0.2;
+  /* Rende il testo opaco, come un elemento di sfondo */
+  user-select: none;
+  /* Impedisce la selezione del testo */
+  color: var(--color-light-text);
+  /* Colore del testo */
+}
+
+.creative-title {
+  font-family: var(--font-titolo);
+  /* Stesso font del titolo principale */
+  font-size: 12vw;
+  /* Dimensione grande, da regolare */
+  font-weight: 200;
+  /* Peso più leggero */
+  line-height: 0.9em;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  color: var(--color-light-text);
+}
+
+.creative-description {
+  font-family: var(--font-titolo);
+  font-size: 4vw;
+  line-height: 1.5em;
+  color: var(--color-accent);
+  /* Usa il colore accent per la descrizione */
+  margin-top: 1rem;
+  text-transform: uppercase;
+}
+
+/* Stili per il contenitore dell'animazione */
+.word-animation-container {
+  /* Imposta la durata totale di un ciclo completo dell'animazione per tutte le parole. */
+  --tempo-animazione: 22s;
+
+  display: flex;
+  align-items: center;
+
+  height: 100px;
+  overflow: hidden;
+  /* Fondamentale per nascondere le parole quando entrano/escono */
+  font-family: var(--font-text);
+  font-size: 3em;
+  font-weight: 500;
+  color: var(--color-light-text);
+
+  position: relative;
+  /* CRUCIALE: Rendi il contenitore un punto di riferimento per gli elementi assoluti */
+
+  margin-top: 4vh;
+  margin-bottom: 4vh;
+  margin-left: 1vw;
+  margin-right: 1vw;
+
+  max-width: 800px;
+
+  background-color: var(--color-dark);
+  border-radius: 10px;
+}
+
+/* Stili per ciascuna parola */
+.word-item {
+  position: absolute;
+  /* Per sovrapporre le parole nello stesso spazio */
+  opacity: 0;
+  /* Inizialmente nascosto */
+  transform: translateY(-100%);
+  /* Inizialmente sopra il contenitore */
+  animation: wordSlideInOut var(--tempo-animazione) infinite;
+  animation-fill-mode: both;
+  /* Assicura che l'animazione mantenga il suo stato anche prima del delay */
+  white-space: nowrap;
+  /* Evita che la parola vada a capo */
+  text-transform: uppercase;
+  /* Tutto maiuscolo */
+
+  /* Per allineare le parole a destra all'interno del contenitore */
+  right: 0;
+  /* Allinea l'elemento al bordo destro del suo contenitore relativo */
+  text-align: right;
+  /* Allinea il testo all'interno dell'elemento a destra */
+  width: 100%;
+  /* Assicurati che l'elemento occupi la larghezza del contenitore per far funzionare text-align */
+  box-sizing: border-box;
+  /* Include padding e border nella larghezza se ne hai */
+  padding-right: 20px;
+  /* Aggiungi un po' di padding per non far attaccare il testo al bordo */
+}
+
+/* Definizione dell'animazione per le parole */
+@keyframes wordSlideInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+    /* INIZIA SOPRA */
+  }
+
+  1.13% {
+    opacity: 1;
+    transform: translateY(0);
+    /* Entra al centro */
+  }
+
+  7.95% {
+    opacity: 1;
+    transform: translateY(0);
+    /* Rimane visibile */
+  }
+
+  9.09% {
+    opacity: 0;
+    transform: translateY(100%);
+    /* ESCE SOTTO */
+  }
+
+  9.10% {
+    opacity: 0;
+    transform: translateY(-100%);
+    /* TORNA SOPRA istantaneamente */
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-100%);
+    /* Assicura che rimanga SOPRA fino al prossimo 0% */
+  }
+}
+
+/* Regole per il ritardo di ciascuna parola */
+.word-item:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.word-item:nth-child(2) {
+  animation-delay: 2s;
+}
+
+.word-item:nth-child(3) {
+  animation-delay: 4s;
+}
+
+.word-item:nth-child(4) {
+  animation-delay: 6s;
+}
+
+.word-item:nth-child(5) {
+  animation-delay: 8s;
+}
+
+.word-item:nth-child(6) {
+  animation-delay: 10s;
+}
+
+.word-item:nth-child(7) {
+  animation-delay: 12s;
+}
+
+.word-item:nth-child(8) {
+  animation-delay: 14s;
+}
+
+.word-item:nth-child(9) {
+  animation-delay: 16s;
+}
+
+.word-item:nth-child(10) {
+  animation-delay: 18s;
+}
+
+.word-item:nth-child(11) {
+  animation-delay: 20s;
+}
+
+.section-title {
+  font-family: var(--font-titolo);
+  font-size: 8vw;
+  /* Titoli grandi per le sezioni */
+  line-height: 0.9em;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  color: var(--color-light-text);
+  width: 100%;
+  /* Per permettere allineamenti con text-align */
+}
+
+.section-description {
+  font-family: var(--font-text);
+  font-size: 1.2vw;
+  line-height: 1.5em;
+  color: var(--color-light-text);
+  margin-top: var(--spacing-small);
+  max-width: 45vw;
+  /* Larghezza limitata per le descrizioni */
+}
+
+.create {
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  margin-right: 2vw;
+  margin-left: -4vw;
+}
+
+.unique {
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  margin-right: 1vw;
+  margin-left: -15vw;
+}
+
+.experience {
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  margin-right: -5vw;
+  margin-left: -5vw;
+}
+
+.someof {
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  margin-right: 6vw;
+  margin-left: -3vw;
+}
+
+.latest {
+  margin-top: 0vw;
+  margin-bottom: 1vw;
+  margin-right: 10vw;
+  margin-left: 3vw;
+}
+
+.works {
+  margin-top: 0vw;
+  margin-bottom: 4vw;
+  margin-right: 1vw;
+  margin-left: 1vw;
+}
+
+.letsleave {
+  margin-top: 10vw;
+  margin-bottom: 1vw;
+  margin-right: 1vw;
+  margin-left: -5vw;
+}
+
+.amark {
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  margin-right: 6vw;
+  margin-left: 1vw;
+}
+
+.together {
+  margin-top: 1vw;
+  margin-bottom: 5vw;
+  margin-right: 1vw;
+  margin-left: 1vw;
+}
+
+/* wave */
+.wave {
+  animation-name: shimmerWaveIdle;
+  animation-duration: 10s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  background: linear-gradient(275deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0) 100%);
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@keyframes shimmerWaveIdle {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.openToCollab {
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* hovering */
+.hover-underline {
+  font-size: 2rem;
+  color: #ffffff;
+  position: relative;
+  display: inline-block;
+}
+
+.hover-underline::after,
+.hover-underline::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #ff0000, #00ffff);
+  bottom: -5px;
+  left: 0;
+  transform: scaleX(1);
+  transform-origin: right;
+  transition: transform 0.4s ease-out;
+}
+
+.hover-underline::before {
+  top: -5px;
+  transform-origin: left;
+}
+
+.hover-underline:hover::after,
+.hover-underline:hover::before {
+  transform: scaleX(0);
+}
+
+/* --- SEZIONE SERVIZI --- */
+.services-intro {
+  flex: 1;
+  /* Occupa spazio flessibile */
+  max-width: 35vw;
+  margin-right: var(--spacing-large);
+  display: flex;
+  flex-direction: column;
+  /* Impila il paragrafo e il bottone */
+  justify-content: space-between;
+  /* Spinge il bottone in basso se c'è spazio sufficiente */
+}
+
+.services-intro p {
+  font-family: var(--font-text);
+  font-size: 1.2vw;
+  line-height: 1.5em;
+  color: var(--color-light-text);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: var(--spacing-small);
+}
+
+/* Assicurati che il bottone abbia un po' di margine */
+.services-intro .button {
+  margin-top: var(--spacing-medium);
+  /* Assicura che ci sia spazio sopra il bottone */
+}
+
+.services-layout {
+  flex-direction: row;
+  /* Colonna a sinistra, lista a destra */
+  justify-content: space-between;
+  align-items: flex-start;
+  /* Allinea gli elementi in alto */
+  flex-wrap: wrap;
+  /* Permette di andare a capo su schermi piccoli */
+
+  display: flex;
+  /* Assicurati che sia un flex container */
+  width: 100%;
+  /* Assicurati che occupi tutta la larghezza del section-content-wrapper */
+  max-width: 1200px;
+  /* Ripeti il max-width del wrapper per coerenza */
+}
+
+.service-list {
+  flex: 2;
+  /* Occupa il doppio dello spazio rispetto all'intro */
+  max-width: 55vw;
+}
+
+.service-item {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-small) 0;
+  border-bottom: 1px solid var(--color-border);
+  /* Linea divisoria */
+  padding-right: var(--spacing-small);
+}
+
+.service-item:last-child {
+  border-bottom: none;
+  /* Rimuove la linea sull'ultimo elemento */
+}
+
+.service-number {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 2.5rem;
+  /* Numero grande */
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-right: var(--spacing-medium);
+  min-width: 40px;
+  /* Larghezza minima per il numero */
+  text-align: center;
+
+  text-shadow: 0 0 1px var(--color-accent), 0 0 2px yellow,
+    0 0 3px var(--color-light-text);
+}
+
+.service-text {
+  flex-grow: 1;
+  /* Assicura che il testo occupi tutto lo spazio disponibile nel service-item */
+  font-family: var(--font-text);
+  font-size: 1.8rem;
+  font-weight: 500;
+
+  color: var(--color-light-text);
+  text-transform: uppercase;
+  text-align: left;
+
+  overflow-wrap: break-word;
+  /* Assicura che le parole lunghe vadano a capo */
+}
+
+/*animazione "servizi per i miei clienti" */
+.gradient-text {
+  align-items: center;
+  justify-content: center;
+
+  margin: 0;
+  height: 100vh;
+  width: 100%;
+  font-family: var(--font-text);
+  font-size: 50px;
+  font-weight: 700;
+
+  background: linear-gradient(to right,
+      red,
+      yellow,
+      lime,
+      aqua,
+      blue,
+      magenta,
+      red);
+  background-size: 200% auto;
+  color: #000;
+  background-clip: text;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: moveBg 7s linear infinite;
+  animation: moveBg 7s linear infinite;
+}
+
+.gradient-text:before {
+  content: attr(data-text);
+
+  width: auto;
+  height: auto;
+  position: absolute;
+  z-index: -1;
+  filter: blur(25px);
+  opacity: 0;
+  background: linear-gradient(to right,
+      red,
+      yellow,
+      lime,
+      aqua,
+      blue,
+      magenta,
+      red);
+  background-size: 200% auto;
+  color: #000;
+  background-clip: text;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: moveBg 7s linear infinite;
+  animation: moveBg 7s linear infinite;
+  transition: all 0.3s ease;
+}
+
+@-webkit-keyframes moveBg {
+  to {
+    background-position: 200% center;
+  }
+}
+
+@keyframes moveBg {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/*/////////////// */
+
+.glowing-word {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-light-text);
+  /* Corretto: da var(--color-light) a var(--color-light-text) */
+  /* Per l'effetto glow, puoi aggiungere shadow o pseudo-elementi */
+
+  text-shadow: -0.2rem -0.2rem 1rem #00ff00, 0.2rem 0.2rem 1rem #0000ff,
+    0 0 2rem var(--color-accent), 0 0 4rem var(--color-accent);
+
+  margin-bottom: var(--spacing-medium);
+  display: block;
+  /* Assicura che sia un blocco per il margine */
+}
+
+/* button sheen effect */
+
+/* Stile per l'elemento a cui vuoi applicare lo sheen */
+.sheen {
+  position: relative;
+  overflow: hidden;
+  /* Aggiungi qui gli stili base del tuo elemento, ad esempio un bottone */
+  /* transition: box-shadow 0.3s ease; per un effetto al passaggio del mouse */
+}
+
+.sheen::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  bottom: -50%;
+  left: -50%;
+
+  /* Usa un gradiente lineare che simuli un riflesso di luce */
+  background: var(--lith-sheen);
+  transform: rotateZ(60deg) translate(-10em, 12em);
+  /* Posizione iniziale dello sheen */
+  pointer-events: none;
+  /* Assicura che l'overlay non interferisca con i click */
+
+  animation: sheen cubic-bezier(0.25, 0.46, 0.45, 0.94) 2s 3s infinite;
+  /* bezier: easyout*/
+}
+
+@keyframes sheen {
+  0% {
+    /* Partenza più arretrata per un effetto più lungo */
+    transform: rotateZ(60deg) translate(-15em, 15em);
+    opacity: 0;
+    /* Inizia invisibile */
+  }
+
+  20% {
+    opacity: 0.8;
+    /* Diventa quasi completamente visibile rapidamente */
+  }
+
+  80% {
+    transform: rotateZ(60deg) translate(1em, -9em);
+    opacity: 1;
+    /* Mantiene la visibilità */
+  }
+
+  100% {
+    /* Arrivo più lontano per un effetto più lungo */
+    transform: rotateZ(60deg) translate(15em, -15em);
+    opacity: 0;
+    /* Termina invisibile */
+  }
+}
+
+/*///////////////////////////////////////////////////////////////////////////////////////////*/
+
+/* --- Griglia dei Progetti --- */
+/* card 2*/
+#works .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 40px 0;
+  width: 100%;
+}
+
+#works .container .box {
+  position: relative;
+  width: 320px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 30px;
+  transition: 1.2s;
+}
+
+#works .container .box::before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 50px;
+  width: 50%;
+  height: 100%;
+  text-decoration: none;
+  background: var(--color-accent);
+  border-radius: 8px;
+  transform: skewX(15deg);
+  transition: 1.2s;
+}
+
+#works .container .box::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  background: var(--color-accent);
+  border-radius: 8px;
+  transform: skewX(15deg);
+  transition: 1.2s;
+  filter: blur(30px);
+}
+
+#works .container .box:hover:before,
+#works .container .box:hover:after {
+  transform: skewX(0deg);
+  left: 20px;
+  width: calc(100% - 90px);
+}
+
+#works .container .box:nth-child(1):before,
+#works .container .box:nth-child(1):after {
+  background: linear-gradient(315deg, #ffbc00, #ff0058);
+}
+
+#works .container .box:nth-child(2):before,
+#works .container .box:nth-child(2):after {
+  background: linear-gradient(315deg, #03a9f4, #ff0058);
+}
+
+#works .container .box:nth-child(3):before,
+#works .container .box:nth-child(3):after {
+  background: linear-gradient(315deg, #4dff03, #00d0ff);
+}
+
+#works .container .box span {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+#works .container .box span::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  transition: 0.1s;
+#works .container .box::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50px;
+  width: 50%;
+  height: 100%;
+  background: var(--color-accent);
+  border-radius: 8px;
+  transform: skewX(15deg);
+  transition: 1.2s;
+  filter: blur(30px);
+}
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  transition: 0.5s;
+  animation: animate 2s linear infinite;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  animation-delay: 0s;
+}
+
+#works .container .box:hover span:after {
+  bottom: -50px;
+  right: 50px;
+  width: 100px;
+  height: 100px;
+  opacity: 1;
+}
+
+@keyframes animate {
+
+  0%,
+  100% {
+    transform: translateY(10px);
+  }
+
+  50% {
+    transform: translate(-10px);
+  }
+}
+
+#works .container .box .content {
+  position: relative;
+  left: 0;
+  padding: 20px 40px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  z-index: 1;
+  transition: 0.5s;
+  /* Questa transizione si applicherà anche a align-items */
+  color: black;
+
+  /* NUOVE MODIFICHE PER TRANSIZIONE DOLCE DEL TESTO */
+  display: flex;
+  /* Trasforma .content in un contenitore flex */
+  flex-direction: column;
+  /* Organizza gli elementi (h2, p, a) in colonna */
+  align-items: flex-start;
+  /* Default: allinea gli elementi a sinistra */
+}
+
+#works .container .box:hover .content {
+  left: -25px;
+  padding: 60px 40px;
+  align-items: center;
+  /* Quando il box è in hover, centra gli elementi flex */
+}
+
+#works .container .box .content h2 {
+  display: inline-block;
+  font-size: 2em;
+  color: black;
+  margin-bottom: 10px;
+  font-family: var(--font-titolo);
+}
+
+#works .container .box .content p {
+  display: inline-block;
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  line-height: 1.4em;
+  font-family: var(--font-text);
+}
+
+#works .container .box .content a {
+  display: inline-block;
+  font-size: 1.1em;
+  color: #111;
+  background: var(--color-accent);
+  padding: 10px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 700;
+  margin-top: 5px;
+  font-family: var(--font-titolo);
+  transition: background 1.2s linear, border 1.2s linear, box-shadow 1.2s linear;
+}
+
+#works .container .box .content a:hover {
+  background: #ffcf4d;
+  border: 1px solid rgba(255, 0, 88, 0.4);
+  box-shadow: 0 1px 15px rgba(1, 1, 1, 0.2);
+}
+
+/* card 2 fine*/
+
+
+/* ----------------------------------------------
+ * animation text-pop-up-bottom
+ * ----------------------------------------------
+ * Generated by Animista
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info.
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+.text-directional-pop-up {
+  animation: combined-directional-effect 5s cubic-bezier(0.445, 0.05, 0.55, 0.95) 3s infinite alternate both;
+  -webkit-animation: combined-directional-effect 5s cubic-bezier(0.445, 0.05, 0.55, 0.95) 3s infinite alternate both;
+}
+
+@keyframes combined-directional-effect {
+  0% {
+    transform: translateY(0) translateX(0);
+    transform-origin: 50% 50%;
+    text-shadow: none;
+    /* L'ombra non è visibile quando il testo è nella posizione iniziale */
+  }
+
+  50% {
+    transform: translateY(-50px) translateX(-50px);
+    /* Spostamento in alto a sinistra */
+    transform-origin: 50% 50%;
+    text-shadow: -1px -1px 0 #2d00f7ff, -2px -2px 0 #6a00f4ff,
+      -3px -3px 0 #8900f2ff, -4px -4px 0 #a100f2ff, -5px -5px 0 #b100e8ff,
+      -6px -6px 0 #bc00ddff, -7px -7px 0 #d100d1ff, -8px -8px 0 #db00b6ff,
+      -9px -9px 0 #e500a4ff, -50px -30px 30px #f20089ff;
+    /* Ombra diffusa in alto a sinistra */
+  }
+
+  100% {
+    transform: translateY(50px) translateX(50px);
+    /* Spostamento in basso a destra */
+    transform-origin: 50% 50%;
+    text-shadow: 1px 1px 0 #ff8800, 2px 2px 0 #ff7900, 3px 3px 0 #ff6a00,
+      4px 4px 0 #ff5b00, 5px 5px 0 #ff4c00, 6px 6px 0 #ff3c00, 7px 7px 0 #ff2d00,
+      8px 8px 0 #ff1e00, 9px 9px 0 #ff0f00, 50px 30px 30px #ff0000;
+  }
+}
+
+@-webkit-keyframes combined-directional-effect {
+  0% {
+    -webkit-transform: translateY(0) translateX(0);
+    -webkit-transform-origin: 50% 50%;
+    text-shadow: none;
+  }
+
+  50% {
+    -webkit-transform: translateY(-50px) translateX(-50px);
+    -webkit-transform-origin: 50% 50%;
+    text-shadow: -1px -1px 0 #2d00f7ff, -2px -2px 0 #6a00f4ff,
+      -3px -3px 0 #8900f2ff, -4px -4px 0 #a100f2ff, -5px -5px 0 #b100e8ff,
+      -6px -6px 0 #bc00ddff, -7px -7px 0 #d100d1ff, -8px -8px 0 #db00b6ff,
+      -9px -9px 0 #e500a4ff, -50px -30px 30px #f20089ff;
+    /* Ombra diffusa in alto a sinistra */
+  }
+
+  100% {
+    -webkit-transform: translateY(50px) translateX(50px);
+    -webkit-transform-origin: 50% 50%;
+    text-shadow: 1px 1px 0 #ff8800, 2px 2px 0 #ff7900, 3px 3px 0 #ff6a00,
+      4px 4px 0 #ff5b00, 5px 5px 0 #ff4c00, 6px 6px 0 #ff3c00, 7px 7px 0 #ff2d00,
+      8px 8px 0 #ff1e00, 9px 9px 0 #ff0f00, 50px 30px 30px #ff0000;
+  }
+}
+
+/* --- FOOTER --- */
+.footer {
+  background-color: var(--color-grigio-dark);
+  /* Sfondo del footer leggermente diverso */
+  color: var(--color-binaco-spento);
+
+  text-align: center;
+  padding: var(--spacing-medium) 4vw;
+  border-top: 1px solid var(--color-border);
+  /* Linea sottile sopra il footer */
+  margin: 1vh;
+
+  font-family: var(--font-titolo);
+  font-size: 0.99rem;
+}
+
+.social-links {
+  margin-top: var(--spacing-large);
+  display: flex;
+  gap: var(--spacing-medium);
+  /* Spazio tra i link sociali */
+  justify-content: center;
+  /* Centra i link */
+  text-transform: uppercase;
+  font-family: var(--font-titolo);
+}
+
+.social-links a {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+/* --- RESPONSIVITÀ (MEDIA QUERIES) --- */
+
+/* Breakpoint 1: Per tablet grandi e laptop piccoli (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .hero-section {
+    padding: 8vh 8vw;
+  }
+
+  .main-title {
+    font-size: 14vw;
+  }
+
+  .subtitle {
+    font-size: 2.5vw;
+    align-self: flex-start;
+  }
+
+  .header-description {
+    max-width: 60vw;
+    align-self: flex-start;
+  }
+
+  .header-description p {
+    font-size: 1.8vw;
+  }
+
+  .button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+
+  .section-title {
+    font-size: 11vw;
+    font-weight: 200;
+  }
+
+  .section-description {
+    font-size: 2vw;
+    max-width: 70vw;
+  }
+
+  .services-layout {
+    flex-direction: column;
+    /* Impila elementi su tablet */
+    align-items: center;
+    /* Centra gli elementi impilati */
+    text-align: center;
+    /* Centra il testo */
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: var(--spacing-small);
+  }
+
+  .services-intro {
+    max-width: 80vw;
+    margin-right: 0;
+    margin-bottom: var(--spacing-large);
+    align-items: center;
+    /* Centra il contenuto di services-intro */
+  }
+
+  .services-intro p {
+    font-size: 2vw;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: var(--spacing-small);
+  }
+
+  .service-item {
+    justify-content: center;
+    /* Centra numeri e testo del servizio */
+  }
+
+  .service-number {
+    font-size: 2rem;
+    margin-right: 1.5rem;
+  }
+
+  .service-text {
+    font-size: 1.4rem;
+  }
+
+  .creative-dev-section {
+    right: 8vw;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+  }
+
+  .creative-title {
+    font-size: 14vw;
+  }
+
+  .creative-description {
+    font-size: 4vw;
+    line-height: 10em;
+    color: var(--color-accent);
+    /* Usa il colore accent per la descrizione */
+    margin-top: 1rem;
+    text-transform: uppercase;
+  }
+
+  /* Stili responsivi per le card animate */
+  #works .container .box {
+    margin: 40px 20px;
+    /* Riduci il margine orizzontale */
+  }
+}
+
+/* =================================================================== */
+/* 🚀 STILI PER OTTIMIZZAZIONE MOBILE (Boost)             */
+/* =================================================================== */
+
+/* Breakpoint generale per tablet e mobile */
+@media (max-width: 768px) {
+  /* --- STRATEGIA GLOBALE: FONT FLUIDI --- */
+  /*
+    Problema: L'uso di 'vw' per i font li rende troppo grandi su desktop
+    e illeggibili su mobile.
+    Soluzione: Usiamo clamp() per un font che si adatta fluidamente ma
+    rimane entro limiti leggibili. clamp(MIN, PREFERITO, MAX).
+  */
+
+  .main-title,
+  .creative-title {
+    /* Sostituisce font-size: 12vw o superiore */
+    font-size: clamp(3.5rem, 20vw, 8rem);
+    line-height: 1.1em;
+  }
+
+  .section-title {
+    /* Sostituisce font-size: 8vw */
+    font-size: clamp(3rem, 15vw, 6rem);
+    line-height: 1.1em;
+  }
+
+  .subtitle,
+  .header-description p,
+  .section-description,
+  .services-intro p,
+  .creative-description {
+    /* Normalizza i font più piccoli */
+    font-size: clamp(1rem, 4vw, 1.25rem);
+    line-height: 1.6em;
+    /* Ripristina una leggibilità corretta */
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: var(--spacing-small);
+
+  }
+
+  /* --- 1. HERO SECTION & CREATIVE DEV --- */
+  /*
+    Problema: Il posizionamento assoluto di '.creative-dev-section' rompe il layout.
+    Soluzione: Lo rendiamo un blocco normale, che segue il flusso del documento.
+  */
+  .hero-section {
+    /* Riduciamo il padding per dare più spazio */
+    padding: 4vh 5vw;
+  }
+
+  .creative-dev-section {
+    position: relative;
+    /* Rimuove il posizionamento assoluto */
+    top: auto;
+    right: auto;
+    transform: none;
+    /* Resetta la traslazione */
+    text-align: center;
+    /* Centra il testo */
+    margin-top: 2rem;
+    /* Aggiunge spazio sopra */
+    padding: 0 5vw;
+    opacity: 1;
+    /* Lo rendiamo pienamente visibile */
+  }
+
+  .word-animation-container {
+    height: 60px;
+    /* Altezza adatta al nuovo font-size */
+    font-size: clamp(1.5rem, 8vw, 2.5rem);
+  }
+
+  /* --- 2. SEZIONE ABOUT & TITOLI DI SEZIONE --- */
+  /*
+    Problema: I margini negativi e specifici per desktop (es. margin-left: -15vw)
+    spostano il testo fuori dallo schermo.
+    Soluzione: Resettiamo i margini e centriamo il testo.
+  */
+  .create,
+  .unique,
+  .experience,
+  .someof,
+  .latest,
+  .works,
+  .letsleave,
+  .amark,
+  .together {
+    margin: 0 auto;
+    /* Resetta e centra */
+    padding: 0.5rem 0;
+    text-align: center;
+  }
+
+  .section-content-wrapper {
+    align-items: center;
+    /* Centra tutto il contenuto delle sezioni */
+  }
+
+  .section-description {
+    text-align: center;
+    /* Centra il testo descrittivo */
+    max-width: 90%;
+    /* Occupa quasi tutta la larghezza */
+  }
+
+  /* --- 3. SEZIONE SERVIZI --- */
+  .services-layout {
+    text-align: center;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: var(--spacing-small);
+  }
+
+  .service-list,
+  .services-intro {
+    max-width: 100%;
+    /* Occupa tutta la larghezza */
+  }
+
+  .service-item {
+    flex-direction: column;
+    /* Impila numero e testo */
+    text-align: center;
+    gap: 0.5rem;
+    padding: 1.5rem 0;
+  }
+
+  .service-text {
+    font-size: clamp(1rem, 5vw, 1.2rem);
+  }
+
+  /* --- 4. SEZIONE WORKS (Card) --- */
+  #works .container .box {
+    width: 90%;
+    /* Le card occupano quasi tutto lo schermo */
+    max-width: 350px;
+    /* Ma non diventano troppo larghe */
+  }
+}
+
+/* Breakpoint specifico per schermi molto piccoli (es. iPhone SE) */
+@media (max-width: 375px) {
+
+  .main-title,
+  .creative-title {
+    font-size: clamp(3rem, 18vw, 8rem);
+    /* Riduci leggermente */
+  }
+
+  .word-animation-container {
+    height: 50px;
+    font-size: clamp(1.2rem, 7vw, 2rem);
+  }
+
+  .service-text {
+    font-size: clamp(0.9rem, 4.5vw, 1.1rem);
+  }
+}

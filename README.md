@@ -1,10 +1,12 @@
+<!-- V0.02 init-->
+
 ### **Who I am?**
 
 - I'm **Francesco Rogo**, an Italian Back-End Developer
 
 ### 🔭 **I’m currently working on:**
 
-- My portfolio/website <!--(https://google.org)-->
+- My [portfolio-website](https://fra-tera04.github.io/Fra-Tera04/)
 - Bachelor's Degree in Computer Science at Federico II ( EQF6 )
 - Full Stack Developer Course ( EQF5 )
 
@@ -37,5 +39,4 @@
 ## How to reach me?
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-darkblue)](https://www.linkedin.com/in/francesco-rogo/)
-[![Email](https://img.shields.io/badge/Email-darkgreen)](https://mail.google.com/mail/?view=cm&fs=1&to=francescorogo22@gmail.com&su=[From%20GitHub]%20Il-Tuo-Messaggio&body=)
-[![Il_Mio_Sito](https://img.shields.io/badge/Il_Mio_Sito-darkred)](https://github.miosito---)
+[![Email](https://img.shields.io/badge/Email-darkgreen)](https://mail.google.com/mail/?view=cm&fs=1&to=francescorogo22@gmail.com&su=[From%20GitHub]%20IlTuoMessaggio&body=)
