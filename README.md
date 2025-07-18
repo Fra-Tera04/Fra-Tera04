@@ -1,9 +1,3 @@
-<style>
-body {
-    background-color: #000000; /* Nero puro */
-    color: #f0f0f0; /* Testo chiaro per contrasto */
-}
-</style>
 
 ### **Who I am?**
 
@@ -11,7 +5,7 @@ body {
 
 ### 🔭 **I’m currently working on:**
 
-- My portfolio/website <!--(https://google.org)-->
+- My [portfolio-website](https://fra-tera04.github.io/Fra-Tera04/)
 - Bachelor's Degree in Computer Science at Federico II ( EQF6 )
 - Full Stack Developer Course ( EQF5 )
 
