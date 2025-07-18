@@ -4,7 +4,7 @@
 
 ### **Who I am?**
 
-- I'm **Franesco Rogo**, an Italian Back-End Developer
+- I'm **Francesco Rogo**, an Italian Back-End Developer
 
 ### 🔭 **I’m currently working on:**
 

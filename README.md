@@ -1,6 +1,6 @@
 ### **Who I am?**
 
-- I'm **Franesco Rogo**, an Italian Back-End Developer
+- I'm **Francesco Rogo**, an Italian Back-End Developer
 
 ### 🔭 **I’m currently working on:**
 
@@ -38,4 +38,4 @@
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-darkblue)](https://www.linkedin.com/in/francesco-rogo/)
 [![Email](https://img.shields.io/badge/Email-darkgreen)](https://mail.google.com/mail/?view=cm&fs=1&to=francescorogo22@gmail.com&su=[From%20GitHub]%20Il-Tuo-Messaggio&body=)
-[![Il_Mio_Sito](https://img.shields.io/badge/Il_Mio_Sito-darkred)](https://github.miosito)
+[![Il_Mio_Sito](https://img.shields.io/badge/Il_Mio_Sito-darkred)](https://github.miosito---)
