@@ -121,14 +121,7 @@ Ogni readme deve avere queste cose!
 2.0
 - add to 'services for my clients' https://prismic.io/blog/css-text-animations#31-the-aurora
 
-- add botton animation: https://prismic.io/blog/css-animation-examples#button-animations
-
 - add animation loader: https://prismic.io/blog/css-animation-examples#20-kinetic-css-loaders
-
-- add card effects:
-  (1) https://prismic.io/blog/css-hover-effects#1-holographic-card
-
-  (2)
 
 - add social links: https://prismic.io/blog/css-hover-effects#20-text-and-gradient-icon-hover-effect
 

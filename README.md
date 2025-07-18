@@ -26,7 +26,9 @@
 
 **Linguaggi & Strumenti:** Java 8+ • SpringBoot • Git • Github • Python 3 • HTML5 • CSS • NODEJS • Matlab
 
+<!--
 ## 🚀 Progetti in evidenza
+-->
 
 <!-- repo-list start -->
 
