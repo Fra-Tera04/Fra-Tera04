@@ -1154,19 +1154,9 @@ p {
   backdrop-filter: blur(10px);
   opacity: 0;
   transition: 0.1s;
-#works .container .box::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50px;
-  width: 50%;
-  height: 100%;
-  background: var(--color-accent);
-  border-radius: 8px;
-  transform: skewX(15deg);
-  transition: 1.2s;
-  filter: blur(30px);
 }
+
+#works .container .box span:after {
   content: "";
   position: absolute;
   bottom: 0;
