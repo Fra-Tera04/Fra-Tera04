@@ -1239,7 +1239,6 @@ p {
   margin-bottom: 10px;
   font-family: var(--font-titolo);
 }
-
 #works .container .box .content p {
   display: inline-block;
   font-size: 1.1em;
@@ -1247,8 +1246,15 @@ p {
   line-height: 1.4em;
   font-family: var(--font-text);
 }
-
-#works .container .box .content a {
+#works .container .box .content a{
+  text-decoration: none;
+  color: var(--color-dark);
+  font-family: var(--font-text);
+  font-size: 1.1em;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+#works .container .box .content a #box {
   display: inline-block;
   font-size: 1.1em;
   color: #111;
