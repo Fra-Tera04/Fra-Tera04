@@ -1,6 +1,6 @@
 <!-- V1.1 51026-->
 
-# Hello, universe. I'm Francesco Rogo 
+# Hello, universe. I'm Francesco Rogo
 
 Backend Developer with a strong theoretical foundation in Computer Science and a passion for distributed systems, formal logic, and creative coding.
 
@@ -11,16 +11,21 @@ Backend Developer with a strong theoretical foundation in Computer Science and a
 
 ---
 
+<!-- START: ACADEMIC -->
+
 ## 🎯 Background & Education
 
 - 🎓 **M.Sc. in Computer Science** (Artificial Intelligence track) — _In Progress_
 - 🎓 **B.Sc. in Computer Science** (EQF Level 6) — _University of Naples Federico II_
-- 📜 **Full Stack Developer Course** (EQF Level 5) — *SkillFactory*
-- 💼 **Former Software Engineering Curricular Internship** — _Synclab_ 
-  - Focused on Spring Boot 3+ microservices and modern Java enterprise architectures. 
+- 📜 **Full Stack Developer Course** (EQF Level 5) — _SkillFactory_
+- 💼 **Former Software Engineering Curricular Internship** — _Synclab_
+  - Focused on Spring Boot 3+ microservices and modern Java enterprise architectures.
   - Check out my [B.Sc. Thesis Project Repository](https://github.com/Fra-Tera04/Tesi-Triennale-IT-Rogo).
+  <!-- END: ACADEMIC -->
 
 ---
+
+<!-- START: EXPERIENCE -->
 
 ## 🛠️ Technical Skills
 
@@ -42,8 +47,11 @@ Backend Developer with a strong theoretical foundation in Computer Science and a
 - **Algorithms & Data Structures:** Asymptotic complexity analysis, Graph theory, Trees, Indexed structures
 - **Formal Methods & Verification:** Automata theory, Formal languages, Mathematical logic, Modal/Epistemic logic & Model Checking
 - **Testing & Quality Assurance:** Unit testing, Integration testing (JUnit 5, Mockito, AssertJ)
+<!-- END: EXPERIENCE -->
 
 ---
+
+<!-- START: PROJECTS -->
 
 ## 🔭 Creative Coding & Personal Explorations
 
@@ -52,6 +60,7 @@ Beyond enterprise engineering, I explore algorithmic art, visual synthesis, and 
 - **[Processing](https://processing.org/)** — Creative visual development and algorithmic installations based on Java.
 - **[p5.js](https://p5js.org/)** — Web-native creative coding and dynamic canvas experiments with JavaScript.
 - **[Strudel.cc](https://strudel.cc/)** — Algorithmic live music coding and pattern generation in real-time JavaScript (a TidalCycles port).
+<!-- END: PROJECTS -->
 
 ---
 
