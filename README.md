@@ -1,49 +1,71 @@
-<!-- V0.02 init-->
+<!-- V1.1 51026-->
 
-### **Who I am?**
+# Hello, universe. I'm Francesco Rogo 
 
-- I'm **Francesco Rogo**, an Italian Back-End Developer
+Backend Developer with a strong theoretical foundation in Computer Science and a passion for distributed systems, formal logic, and creative coding.
 
-### 🔭 **I’m currently working on:**
+[![Website](https://img.shields.io/badge/Portfolio-Live_Site-blue?style=flat-square)](https://fra-tera04.github.io/Fra-Tera04/)
+[![GitHub](https://img.shields.io/badge/GitHub-Fra--Tera04-181717?style=flat-square&logo=github)](https://github.com/Fra-Tera04)
+[![LinkedIn](https://img.shields.io/badge/linkedin-darkblue)](https://www.linkedin.com/in/francesco-rogo/)
+[![Email](https://img.shields.io/badge/Email-darkgreen)](https://mail.google.com/mail/?view=cm&fs=1&to=francescorogo22@gmail.com&su=[From%20GitHub]%20IlTuoMessaggio&body=)
 
-- My [portfolio-website](https://fra-tera04.github.io/Fra-Tera04/) kinda
-- Bachelor's Degree in Computer Science at Federico II ( EQF6 ) fullforce
-- Full Stack Developer Course ( EQF5 ) ended
+---
 
-### 🌱 **In the Spare Time I'm Learning:**
+## 🎯 Background & Education
 
-- **Creative Activities likes**
+- 🎓 **M.Sc. in Computer Science** (Artificial Intelligence track) — _In Progress_
+- 🎓 **B.Sc. in Computer Science** (EQF Level 6) — _University of Naples Federico II_
+- 📜 **Full Stack Developer Course** (EQF Level 5) — *SkillFactory*
+- 💼 **Former Software Engineering Curricular Internship** — _Synclab_ 
+  - Focused on Spring Boot 3+ microservices and modern Java enterprise architectures. 
+  - Check out my [B.Sc. Thesis Project Repository](https://github.com/Fra-Tera04/Tesi-Triennale-IT-Rogo).
 
-  <!--[Processing works](https://processing.org)-->
+---
 
-  - Processing &rarr; a free and flexible graphics library for visual arts to create interactive and non-interactive installations, it uses the Java programming language as base [wiki](https://en.wikipedia.org/wiki/Processing)
+## 🛠️ Technical Skills
 
-  <!-- - [P5.JS works](https://p5js.org/) &rarr; is the web-based version of Processing writed in JavaScript that eneble creative coding for educational porpose and improve your sites -->
+### Core Backend & Languages
 
-  <!-- - [Strudel.js works](https://strudel.cc/workshop/getting-started/) &rarr; is a live code music editor: you can make music with code in real time in Javascript, and it's an official port of the Tidal Cycles pattern language!-->
-  
-  <!-- - Writing my sci-fi anthology stories here-->
+- **Languages:** Java (8, 21), Python 3, Bash / Shell Scripting, SQL & PLSQL, C
+- **Frameworks & Ecosystem:** Spring Boot 3 (Spring Data JPA, RESTful APIs)
+- **Architecture & Paradigms:** Object-Oriented Programming (OOP), SOLID Principles, GoF Design Patterns, Functional Programming
 
-- **Back-End Work Related**
-  - [Spring Boot](https://spring.io/projects/spring-boot) &rarr; a Java open-source extension of Spring used to build microservices, web applications and Spring-based that make project startup and management easier. [wiki](https://en.wikipedia.org/wiki/Spring_Boot)
+### Systems, DevOps & Tooling
 
-### 🛠️ **Competence**
+- **Operating Systems:** Windows / GNU-Linux
+- **Version Control & CI/CD:** Git, GitHub (GitHub Projects, Issue Tracking, Actions / Basic CI workflows, Pull Requests & Code Reviews)
+- **Databases:** Relational Databases (PostgreSQL, MySQL), Schema Design (E-R), Normalization, ACID Transactions
+- **Tooling & Writing:** LaTeX (scientific reports & academic writing), Markdown, Open-Source and Proprietary Office Automation Suites
 
-**Linguaggi & Strumenti:** Java 8+ • SpringBoot • git • github
+### Theoretical & Methodological Foundations
 
-### 🛠️ **Knows**
+- **Algorithms & Data Structures:** Asymptotic complexity analysis, Graph theory, Trees, Indexed structures
+- **Formal Methods & Verification:** Automata theory, Formal languages, Mathematical logic, Modal/Epistemic logic & Model Checking
+- **Testing & Quality Assurance:** Unit testing, Integration testing (JUnit 5, Mockito, AssertJ)
 
-**Linguaggi & Strumenti:** Java 8+ • SpringBoot • Git • Github • Python 3 • HTML5 • CSS • NODEJS • Matlab
+---
+
+## 🔭 Creative Coding & Personal Explorations
+
+Beyond enterprise engineering, I explore algorithmic art, visual synthesis, and sound generation:
+
+- **[Processing](https://processing.org/)** — Creative visual development and algorithmic installations based on Java.
+- **[p5.js](https://p5js.org/)** — Web-native creative coding and dynamic canvas experiments with JavaScript.
+- **[Strudel.cc](https://strudel.cc/)** — Algorithmic live music coding and pattern generation in real-time JavaScript (a TidalCycles port).
+
+---
+
+## 🌐 Connect With Me
+
+- **Portfolio:** [fra-tera04.github.io/Fra-Tera04](https://fra-tera04.github.io/Fra-Tera04/)
+- **GitHub:** [@Fra-Tera04](https://github.com/Fra-Tera04)
 
 <!--
+
 ## 🚀 Progetti in evidenza
+
 -->
 
 <!-- repo-list start -->
 
 <!-- repo-list end -->
-
-## How to reach me?
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-darkblue)](https://www.linkedin.com/in/francesco-rogo/)
-[![Email](https://img.shields.io/badge/Email-darkgreen)](https://mail.google.com/mail/?view=cm&fs=1&to=francescorogo22@gmail.com&su=[From%20GitHub]%20IlTuoMessaggio&body=)
