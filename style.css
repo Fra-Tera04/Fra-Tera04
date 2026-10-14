@@ -2,37 +2,115 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@400;500;700;800&family=Cascadia+Code&display=swap");
 
-/* --- VARIABILI --- */
+/* 
+   --- VARIABILI CENTRALIZZATE (:root) ---
+*/
 :root {
+  /* --- PALETTE COLORI BASE --- */
   --color-dark: #000000;
   --color-medium-dark: #3e1619;
   --color-grigio-dark: #1e1c1c;
   --color-light-text: #f0f0f0;
-  --color-muted: #999;
+  --color-muted: #999999;
   --color-accent: #00a3b3;
+  --color-accent-hover: #008fa3;
   --color-accent-text: #46b5ff;
-  --color-border: #411;
+  --color-border: #441111;
 
+  /* Colori d'accento extra e neon */
+  --blue: #2d00f7;
+  --magenta: #f20089;
+  --red: #ff0202;
+  --white: #ffffff;
+
+  /* Sfondi ed elementi con trasparenza (overlay / card) */
+  --bg-p5-overlay: rgba(0, 0, 0, 0.4);
+  --bg-card-glass: rgba(0, 0, 0, 0.4);
+  --bg-box-card: rgba(16, 0, 1, 0.7);
+  --bg-box-hover: rgba(20, 0, 10, 0.9);
+  --bg-modal-overlay: rgba(0, 0, 0, 0.85);
+  --bg-modal-content: rgba(16, 0, 1, 0.95);
+  --bg-nav-link-hover: rgba(184, 255, 244, 0.1);
+
+  /* Gradienti */
+  --lith-sheen: linear-gradient(to bottom, transparent, var(--color-accent), var(--color-light-text), var(--color-accent), transparent);
+  --spectrum-text: linear-gradient(to right, #ffc2c2, #fff3b0, #d6ffb8, #b8fff4, #bed4ff, #ffd1f0, #ffc2c2);
+  --underline-gradient: linear-gradient(to right, #ff0000, #00ffff);
+
+  /* --- TIPOGRAFIA --- */
   --font-titolo: "Alegreya Sans SC", sans-serif;
   --font-text: "Cascadia Code", sans-serif;
 
-  --blue: #2d00f7ff;
-  --magenta: #f20089ff;
-  --red: #ff0202;
-  --lith-sheen: linear-gradient(to bottom, transparent, var(--color-accent), var(--color-light-text), var(--color-accent), transparent);
-  --spectrum-text: linear-gradient(to right, #ffc2c2, #fff3b0, #d6ffb8, #b8fff4, #bed4ff, #ffd1f0, #ffc2c2);
-
+  /* --- SPAZIATURE SCALARI GENERICHE --- */
+  --spacing-xs: 0.5rem;
   --spacing-small: 1rem;
   --spacing-medium: 2rem;
   --spacing-large: 4rem;
-  --page-gutter: clamp(1.25rem, 4vw, 4rem);
-  --content-max-width: 75rem;
+  --page-gutter: clamp(1.25rem, 2vw, 4rem);
+  --content-max-width: 90rem;
+
+  /* --- PADDING CENTRALIZZATI --- */
+  --pad-btn: 0.5rem;
+  --pad-btn-tablet: clamp(0.75rem, 1.5svh, 1rem) clamp(1rem, 3vw, 2rem);
+  --pad-btn-mobile: 0.75rem 1.25rem;
+
+  --pad-section-default: 0vh 1vw;
+  --pad-section-mobile: clamp(2rem, 3svh, 3.5rem) clamp(1.25rem, 3vw, 2.5rem);
+
+  --pad-hero: clamp(1rem, 2svh, 3.5rem) var(--page-gutter);
+  --pad-hero-tablet: clamp(2rem, 4svh, 3rem) clamp(2rem, 6vw, 5rem);
+  --pad-hero-mobile: var(--hero-header-gap) var(--page-gutter) 0.75rem;
+
+  --pad-card-box: clamp(1.5rem, 3svh, 2rem);
+  --pad-works-container: clamp(1.5rem, 4svh, 2.5rem) 0;
+  --pad-description-box: .5rem;
+  --pad-service-item: var(--spacing-small) var(--spacing-small) var(--spacing-small) 0;
+  --pad-footer: var(--spacing-medium) 4vw;
+  --pad-modal: clamp(1.5rem, 4svh, 2.5rem);
+
+  /* --- MARGINI CENTRALIZZATI --- */
+  --margin-btn-top: var(--spacing-medium);
+  --margin-header-content: clamp(1rem, 5svh, 3.5rem) 0 clamp(0.75rem, 1svh, 1.5rem) 0;
+  --margin-subtitle-top: 1.5rem;
+  --margin-header-desc-bottom: clamp(1rem, 2svh, 3.5rem);
+  --margin-open-collab: clamp(0.75rem, 2vw, 2rem) auto;
+  --margin-works-box: clamp(1.5rem, 3svh, 2.5rem) clamp(1rem, 2vw, 1.5rem);
+  --margin-footer: 1vh;
+  --margin-word-anim: clamp(1rem, 4svh, 2.5rem) 1vw;
+
+  /* Margini specifici sfalsati (Hero layout desktop) */
+  --margin-create: 1vw 1vw 1vw 1vw;
+  --margin-unique: 1vw 1vw 1vw -1vw;
+  --margin-experience: 1vw 1vw 1vw 1vw;
+  --margin-someof: 1vw 6vw 1vw -3vw;
+  --margin-latest: 0vw 10vw 1vw 3vw;
+  --margin-works: 0vw 1vw 4vw 1vw;
+  --margin-letsleave: 0vw 1vw 0 -5vw;
+  --margin-amark: 0rem 6vw 1vw 1vw;
+  --margin-together: 1vw 1vw 5vw 1vw;
+
+  /* --- DIMENSIONI & LAYOUT --- */
   --hero-header-gap: 2.5rem;
+  --creative-dev-top: 49%;
+  --box-width: clamp(18rem, 25vw, 20rem);
+  --box-min-height: 25rem;
+  --border-radius-base: 5px;
+  --border-radius-box-hover: 15px;
+  --border-radius-modal: 10px;
+
+  /* --- TEMPISTICA ANIMAZIONI --- */
   --word-animation-duration: 22s;
-  --creative-dev-top: 50%;
+  --sheen-duration: 2s;
+  --wave-duration: 10s;
+  --pop-duration: 2s;
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+  --transition-spring: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* --- RESET --- */
+/* 
+   --- RESET ---
+    */
 * {
   margin: 0;
   padding: 0;
@@ -80,15 +158,17 @@ body {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: rgba(0, 0, 0, 0.4);
+  background: var(--bg-p5-overlay);
   pointer-events: none;
 }
 
-/* --- TIPOGRAFIA E FOCUS --- */
+/* 
+   --- TIPOGRAFIA E FOCUS ---
+    */
 a {
   color: var(--color-light-text);
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color var(--transition-base);
 }
 
 a:hover {
@@ -109,7 +189,6 @@ a:hover {
   outline-offset: 4px;
 }
 
-/* Necessario: sovrascrive i margin di Bootstrap su h1-h5 e p */
 h1,
 h2,
 h3,
@@ -120,11 +199,13 @@ p {
   padding: 0;
 }
 
-/* --- COMPONENTI --- */
+/* 
+   --- COMPONENTI ---
+    */
 .button {
   display: inline-block;
-  padding: 0.5rem;
-  margin-top: var(--spacing-medium);
+  padding: var(--pad-btn);
+  margin-top: var(--margin-btn-top);
   background-color: var(--color-accent);
   color: var(--color-dark);
   font-family: var(--font-text);
@@ -132,16 +213,18 @@ p {
   font-weight: 700;
   text-align: center;
   text-transform: uppercase;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: var(--border-radius-base);
+  transition: background-color var(--transition-base), color var(--transition-base);
 }
 
 .button:hover {
-  background-color: #008fa3;
+  background-color: var(--color-accent-hover);
   color: var(--color-dark);
 }
 
-/* --- LAYOUT --- */
+/* 
+   --- LAYOUT STRUTTURALE ---
+    */
 .section-content-wrapper {
   max-width: var(--content-max-width);
   width: 100%;
@@ -151,9 +234,9 @@ p {
   align-items: flex-start;
 }
 
-/* --- ANIMAZIONE TESTO (ombra "pop") --- */
+/* --- ANIMAZIONE OMBRA POP --- */
 .text-shadow-pop-bl {
-  animation: text-shadow-pop-bl 2s cubic-bezier(0.23, 1, 0.32, 1) infinite alternate both;
+  animation: text-shadow-pop-bl var(--pop-duration) cubic-bezier(0.23, 1, 0.32, 1) infinite alternate both;
 }
 
 @keyframes text-shadow-pop-bl {
@@ -185,7 +268,9 @@ p {
   align-self: center;
 }
 
-/* --- LAYOUT SEZIONI (sfondo trasparente per mostrare p5.js) --- */
+/* 
+   --- SEZIONI ---
+    */
 .hero-section,
 .section-full-height,
 .section-centered,
@@ -193,7 +278,7 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1vh 1vw;
+  padding: var(--pad-section-default);
 }
 
 .hero-section,
@@ -217,12 +302,12 @@ p {
   align-items: center;
 }
 
-/* --- HERO --- */
+/* --- HERO SPECIFICA --- */
 .hero-section {
   justify-content: space-between;
   flex-direction: column;
   align-items: flex-start;
-  padding: clamp(1rem, 2svh, 3.5rem) var(--page-gutter);
+  padding: var(--pad-hero);
   padding-top: var(--hero-header-gap);
   position: relative;
   overflow: hidden;
@@ -239,8 +324,7 @@ p {
 }
 
 .header-content {
-  margin-top: clamp(1rem, 5svh, 3.5rem);
-  margin-bottom: clamp(0.75rem, 1svh, 1.5rem);
+  margin: var(--margin-header-content);
   text-align: left;
 }
 
@@ -265,18 +349,17 @@ p {
   font-size: clamp(1rem, 2.4svh, 1.5rem);
   font-weight: 200;
   color: var(--color-accent-text);
-  margin-top: 1.5rem;
+  margin-top: var(--margin-subtitle-top);
   text-transform: uppercase;
   align-self: flex-end;
 }
 
 .header-description {
   max-width: min(30vw, 32rem);
-  margin-bottom: clamp(1rem, 2svh, 3.5rem);
+  margin-bottom: var(--margin-header-desc-bottom);
   align-self: flex-start;
 }
 
-/* Testo con riquadro semitrasparente (leggibile sopra p5.js) */
 .header-description p,
 .section-description,
 .services-intro p {
@@ -287,8 +370,8 @@ p {
 
 .header-description p,
 .section-description {
-  background: rgba(0, 0, 0, 0.4);
-  padding: 1rem;
+  background: var(--bg-card-glass);
+  padding: var(--pad-description-box);
   border-left: 3px solid var(--color-accent);
   border-radius: 4px;
   backdrop-filter: blur(4px);
@@ -297,10 +380,10 @@ p {
 .header-description p {
   font-size: clamp(0.95rem, 1.8svh, 1.125rem);
   text-align: justify;
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--spacing-xs);
 }
 
-/* --- CREATIVE DEV --- */
+/* --- CREATIVE DEV SECTION --- */
 .creative-dev-section {
   position: absolute;
   top: var(--creative-dev-top);
@@ -331,9 +414,9 @@ p {
   align-items: center;
   width: min(100%, 50rem);
   height: clamp(4rem, 11svh, 6rem);
-  margin: clamp(1rem, 4svh, 2.5rem) 1vw;
+  margin: var(--margin-word-anim);
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: var(--border-radius-modal);
   font-family: var(--font-text);
   font-size: clamp(1.5rem, 5.5svh, 3rem);
   font-weight: 500;
@@ -424,58 +507,55 @@ p {
 }
 
 .section-description {
+  width: 100%;
   font-size: clamp(0.95rem, 1.8svh, 1.2rem);
   margin-top: var(--spacing-small);
-  max-width: min(45vw, 42rem);
+  max-width: min(82vw, 80rem);
 }
 
 .create {
-  margin: 1vw 2vw 1vw -4vw;
+  margin: var(--margin-create);
 }
 
 .unique {
-  margin: 1vw 1vw 1vw -15vw;
+  margin: var(--margin-unique);
 }
 
 .experience {
-  margin: 1vw -5vw 1vw -5vw;
+  margin: var(--margin-experience);
 }
 
 .someof {
-  margin: 1vw 6vw 1vw -3vw;
+  margin: var(--margin-someof);
 }
 
 .latest {
-  margin: 0vw 10vw 1vw 3vw;
+  margin: var(--margin-latest);
 }
 
 .works {
-  margin: 0vw 1vw 4vw 1vw;
+  margin: var(--margin-works);
 }
 
 .letsleave {
-  margin: 0vw 1vw 0 -5vw;
+  margin: var(--margin-letsleave);
 }
 
 .amark {
-  margin: 0rem 6vw 1vw 1vw;
+  margin: var(--margin-amark);
 }
 
 .together {
-  margin: 1vw 1vw 5vw 1vw;
+  margin: var(--margin-together);
 }
 
-/* Effetto "glitch/terminale" */
 .text-directional-pop-up {
   text-shadow: 3px 3px 0 var(--color-accent), -2px -2px 0 var(--blue);
 }
 
-/* wave */
+/* Shimmer Wave */
 .wave {
-  /* animation: shimmerWaveIdle 5.5s linear infinite;
-  background: linear-gradient(275deg, #fff 0%, var(--color-accent-text) 35%, #fff 50%, var(--color-accent-text) 65%, #fff 100%); */
-
-  animation: shimmerWaveIdle 10s ease-in-out infinite;
+  animation: shimmerWaveIdle var(--wave-duration) ease-in-out infinite;
   background: linear-gradient(275deg, rgba(255, 255, 255, 0) 0%, var(--red) 50%, var(--color-accent-text) 90%, rgba(255, 255, 255, 0) 100%);
   background-size: 200% 100%;
   background-clip: text;
@@ -495,13 +575,12 @@ p {
 }
 
 .openToCollab {
-  margin: clamp(0.75rem, 2vw, 2rem) auto;
+  margin: var(--margin-open-collab);
 }
 
-/* hovering */
 .hover-underline {
   font-size: clamp(1rem, min(2.5vw, 3svh), 2rem);
-  color: #ffffff;
+  color: var(--white);
   position: relative;
   display: inline-block;
 }
@@ -512,7 +591,7 @@ p {
   position: absolute;
   width: 100%;
   height: 2px;
-  background: linear-gradient(to right, #ff0000, #00ffff);
+  background: var(--underline-gradient);
   bottom: -5px;
   left: 0;
   transform: scaleX(1);
@@ -530,7 +609,9 @@ p {
   transform: scaleX(0);
 }
 
-/* --- SERVIZI --- */
+/* 
+   --- SERVIZI ---
+    */
 .services-layout {
   flex-direction: row;
   justify-content: space-between;
@@ -539,7 +620,7 @@ p {
 
 .services-intro {
   flex: 1;
-  max-width: min(35vw, 30rem);
+  max-width: min(42vw, 40rem);
   margin-right: var(--spacing-large);
   display: flex;
   flex-direction: column;
@@ -554,13 +635,13 @@ p {
 
 .service-list {
   flex: 2;
-  max-width: min(55vw, 55rem);
+  max-width: min(62vw, 64rem);
 }
 
 .service-item {
   display: flex;
   align-items: center;
-  padding: var(--spacing-small) var(--spacing-small) var(--spacing-small) 0;
+  padding: var(--pad-service-item);
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -584,7 +665,6 @@ p {
   animation: moveBg 7s reverse infinite;
 }
 
-
 .service-text {
   flex-grow: 1;
   font-family: var(--font-text);
@@ -601,11 +681,9 @@ p {
   font-size: clamp(2.5rem, 6svh, 4rem);
   font-weight: 700;
   line-height: 1.0;
-
   display: inline-block;
   margin-top: 1.5rem;
   margin-bottom: 1rem;
-
   background: var(--spectrum-text);
   background-size: 200% auto;
   background-clip: text;
@@ -632,7 +710,7 @@ p {
   background: var(--lith-sheen);
   transform: rotateZ(60deg) translate(-10em, 12em);
   pointer-events: none;
-  animation: sheen cubic-bezier(0.25, 0.46, 0.45, 0.94) 2s 3s infinite;
+  animation: sheen cubic-bezier(0.25, 0.46, 0.45, 0.94) var(--sheen-duration) 3s infinite;
 }
 
 @keyframes sheen {
@@ -656,44 +734,48 @@ p {
   }
 }
 
-/* --- GRIGLIA PROGETTI (stile hardware/terminale con Hover Personalizzato) --- */
+/* 
+   --- GRIGLIA PROGETTI (#works) ---
+    */
 #works .container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  padding: clamp(1.5rem, 4svh, 2.5rem) 0;
+  padding: var(--pad-works-container);
   width: 100%;
+  max-width: none;
 }
 
 #works .box {
   position: relative;
-  width: clamp(18rem, 25vw, 20rem);
-  min-height: 25rem;
+  width: var(--box-width);
+  min-height: var(--box-min-height);
   height: auto;
-  margin: clamp(1.5rem, 3svh, 2.5rem) clamp(1rem, 2vw, 1.5rem);
-  background: rgba(16, 0, 1, 0.7);
+  margin: var(--margin-works-box);
+  background: var(--bg-box-card);
   border: 1px solid var(--color-border);
   border-left: 3px solid var(--color-accent);
-
-  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-    border-color 0.3s ease, border-radius 0.3s ease, box-shadow 0.3s ease,
-    background-color 0.3s ease;
+  transition: transform var(--transition-spring),
+    border-color var(--transition-base),
+    border-radius var(--transition-base),
+    box-shadow var(--transition-base),
+    background-color var(--transition-base);
   overflow: hidden;
 }
 
 #works .box:hover {
   transform: translateY(-15px) scale(1.03);
-  border-radius: 15px;
+  border-radius: var(--border-radius-box-hover);
   border-color: var(--magenta);
   border-top: 3px solid var(--magenta);
   box-shadow: 0 15px 35px rgba(242, 0, 137, 0.3);
-  background: rgba(20, 0, 10, 0.9);
+  background: var(--bg-box-hover);
 }
 
 #works .content {
-  min-height: 25rem;
-  padding: clamp(1.5rem, 3svh, 2rem);
+  min-height: var(--box-min-height);
+  padding: var(--pad-card-box);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -705,7 +787,7 @@ p {
   color: var(--color-light-text);
   margin-bottom: 15px;
   font-family: var(--font-titolo);
-  transition: color 0.3s ease;
+  transition: color var(--transition-base);
 }
 
 #works .box:hover .content h2 {
@@ -726,15 +808,17 @@ p {
   border: 1px solid var(--color-accent);
   padding: 4px 10px;
   text-transform: uppercase;
-  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease,
-    border-radius 0.3s ease, box-shadow 0.3s ease;
+  transition: color var(--transition-base),
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    border-radius var(--transition-base),
+    box-shadow var(--transition-base);
 }
 
 #works .content a:hover {
   background: var(--blue);
   color: var(--color-light-text);
   border-color: var(--blue);
-
   border-radius: 20px;
   box-shadow: 0 0 10px var(--blue), 0 0 20px var(--blue);
   animation: pulseButton 1s infinite alternate;
@@ -750,11 +834,13 @@ p {
   }
 }
 
-/* --- FINESTRA MODALE (Dettagli README) --- */
+/* 
+   --- MODALE (README) ---
+    */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.85);
+  background: var(--bg-modal-overlay);
   backdrop-filter: blur(8px);
   z-index: 1000;
   display: flex;
@@ -775,11 +861,11 @@ p {
   position: relative;
   width: min(90%, 50rem);
   max-height: min(80vh, calc(100dvh - 2rem));
-  background: rgba(16, 0, 1, 0.95);
+  background: var(--bg-modal-content);
   border: 1px solid var(--color-accent);
   border-top: 4px solid var(--magenta);
-  border-radius: 10px;
-  padding: clamp(1.5rem, 4svh, 2.5rem);
+  border-radius: var(--border-radius-modal);
+  padding: var(--pad-modal);
   overflow-y: auto;
   box-shadow: 0 10px 40px rgba(0, 163, 179, 0.2);
   transform: translateY(20px);
@@ -799,21 +885,20 @@ p {
   color: var(--color-light-text);
   font-size: 2rem;
   cursor: pointer;
-  transition: color 0.3s ease;
+  transition: color var(--transition-base);
 }
 
 .close-btn:hover {
   color: var(--magenta);
 }
 
-/* Stili per il testo dentro la modale */
 #modal-body h3 {
   font-family: var(--font-titolo);
   color: var(--color-accent-text);
   font-size: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-small);
   border-bottom: 1px solid var(--color-border);
-  padding-bottom: 0.5rem;
+  padding-bottom: var(--spacing-xs);
 }
 
 #modal-body h4 {
@@ -821,7 +906,7 @@ p {
   color: var(--magenta);
   font-size: 1.5rem;
   margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--spacing-xs);
 }
 
 #modal-body ul {
@@ -833,15 +918,16 @@ p {
 }
 
 #modal-body li {
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--spacing-xs);
 }
 
 #modal-body strong {
-  color: #fff;
+  color: var(--white);
 }
 
-
-/* --- BOTTONE TORNA IN CIMA (Back to Top) --- */
+/* 
+   --- BOTTONE BACK TO TOP ---
+    */
 #back-to-top {
   position: fixed;
   bottom: 30px;
@@ -857,29 +943,28 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-
   opacity: 0;
   visibility: hidden;
   transform: translateY(20px) scale(0.8);
   transition: opacity 0.4s ease, visibility 0.4s ease,
-    transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-    border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    transform var(--transition-spring),
+    border-color var(--transition-base),
+    color var(--transition-base),
+    box-shadow var(--transition-base);
 }
 
 #back-to-top .icon {
   font-size: 1.5rem;
   line-height: 1;
-  transition: transform 0.3s ease;
+  transition: transform var(--transition-base);
 }
 
-/* Quando la classe .visible viene aggiunta via JavaScript */
 #back-to-top.visible {
   opacity: 1;
   visibility: visible;
   transform: translateY(0) scale(1);
 }
 
-/* Effetto Hover: bagliore neon, pulsazione e cambio colore */
 #back-to-top:hover {
   border-color: var(--magenta);
   color: var(--magenta);
@@ -891,14 +976,16 @@ p {
   transform: scale(1.2);
 }
 
-/* --- FOOTER E SOCIAL --- */
+/* 
+   --- FOOTER E SOCIAL ---
+    */
 .footer {
   background-color: var(--color-grigio-dark);
   color: var(--color-muted);
   text-align: center;
-  padding: var(--spacing-medium) 4vw;
+  padding: var(--pad-footer);
   border-top: 1px solid var(--color-border);
-  margin: 1vh;
+  margin: var(--margin-footer);
   font-family: var(--font-titolo);
   font-size: 0.99rem;
 }
@@ -914,8 +1001,10 @@ p {
 .social-links .nav-link {
   color: var(--color-light-text);
   opacity: 1;
-  transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: color var(--transition-fast),
+    background-color var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
 }
 
 .social-links .nav-link:hover,
@@ -924,7 +1013,7 @@ p {
 }
 
 .social-links .nav-link:hover {
-  background-color: rgba(184, 255, 244, 0.1);
+  background-color: var(--bg-nav-link-hover);
   box-shadow: 0 0 14px rgba(184, 255, 244, 0.16);
   transform: translateY(-2px);
 }
@@ -944,11 +1033,13 @@ p {
   font-weight: 500;
 }
 
-/* --- RESPONSIVE --- */
+/* 
+   --- RESPONSIVE MEDIA QUERIES ---
+    */
 @media (min-width: 1025px) {
   #hero {
-    min-height: 110vh;
-    min-height: 110svh;
+    min-height: 75vh;
+    min-height: 75svh;
   }
 
   .hero-main-content {
@@ -967,9 +1058,34 @@ p {
     max-width: min(36vw, 36rem);
     margin-bottom: 0;
   }
+
+  .services-layout {
+    gap: clamp(2rem, 4vw, 4rem);
+  }
+
+  .services-intro {
+    flex: 0 1 37%;
+    max-width: 42rem;
+    margin-right: 0;
+  }
+
+  .services-intro p,
+  .gradient-text {
+    width: 100%;
+  }
+
+  .gradient-text {
+    display: block;
+    max-width: 100%;
+  }
+
+  .service-list {
+    flex: 1 1 57%;
+    max-width: 64rem;
+  }
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1600px) {
 
   .create,
   .unique,
@@ -986,7 +1102,9 @@ p {
 
 @media (max-width: 1024px) {
   .hero-section {
-    padding: clamp(2rem, 4svh, 3rem) clamp(2rem, 6vw, 5rem);
+    min-height: 75vh;
+    min-height: 75svh;
+    padding: var(--pad-hero-tablet);
     padding-top: var(--hero-header-gap);
   }
 
@@ -1017,7 +1135,7 @@ p {
   }
 
   .button {
-    padding: clamp(0.75rem, 1.5svh, 1rem) clamp(1rem, 3vw, 2rem);
+    padding: var(--pad-btn-tablet);
   }
 
   .section-title {
@@ -1027,7 +1145,7 @@ p {
 
   .section-description {
     font-size: clamp(0.95rem, min(1.8vw, 1.9svh), 1.2rem);
-    max-width: min(70vw, 42rem);
+    max-width: min(90vw, 70rem);
   }
 
   .services-layout {
@@ -1039,7 +1157,7 @@ p {
   }
 
   .services-intro {
-    max-width: 80vw;
+    max-width: 90vw;
     margin-right: 0;
     margin-bottom: var(--spacing-large);
     align-items: center;
@@ -1110,7 +1228,7 @@ p {
   .section-centered,
   .section-half-height {
     min-height: auto;
-    padding: clamp(2rem, 3svh, 3.5rem) clamp(1.25rem, 3vw, 2.5rem);
+    padding: var(--pad-section-mobile);
   }
 
   .hero-section {
@@ -1192,7 +1310,8 @@ p {
   }
 
   .section-content-wrapper {
-    width: min(100%, 42rem);
+    width: 100%;
+    max-width: 100%;
     align-items: center;
     gap: 1rem;
   }
@@ -1213,7 +1332,7 @@ p {
 
   .section-description {
     width: 100%;
-    max-width: 36rem;
+    max-width: 100%;
     margin-top: 0.75rem;
     padding: 1rem;
     text-align: center;
@@ -1226,7 +1345,7 @@ p {
 
   .services-intro {
     width: 100%;
-    max-width: 36rem;
+    max-width: 100%;
     flex: none;
     margin: 0;
     align-items: center;
@@ -1248,7 +1367,7 @@ p {
   .button {
     min-height: 2.75rem;
     margin-top: 1rem;
-    padding: 0.75rem 1.25rem;
+    padding: var(--pad-btn-mobile);
   }
 
   .service-list,
@@ -1359,7 +1478,6 @@ p {
     width: 46px;
     height: 46px;
   }
-
 }
 
 @media (hover: none) and (pointer: coarse) {
@@ -1367,7 +1485,7 @@ p {
     transform: none;
     border-radius: 0;
     box-shadow: none;
-    background: rgba(16, 0, 1, 0.7);
+    background: var(--bg-box-card);
   }
 
   #works .box:hover .content h2 {
