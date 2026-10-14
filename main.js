@@ -72,17 +72,49 @@ const modal = document.getElementById("details-modal");
 const modalBody = document.getElementById("modal-body");
 const closeBtn = document.getElementById("close-modal");
 const readMoreBtns = document.querySelectorAll(".read-more-btn");
+let modalTrigger;
+
+function closeModal() {
+  modal.classList.remove("active");
+  modalTrigger?.focus();
+}
 
 readMoreBtns.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     e.preventDefault();
+    modalTrigger = btn;
     const topic = btn.getAttribute("data-topic");
     modalBody.innerHTML = detailsData[topic]; // Inserisce l'HTML generato dal README
     modal.classList.add("active");
+    setTimeout(() => closeBtn.focus(), 0);
   });
 });
 
-closeBtn.addEventListener("click", () => modal.classList.remove("active"));
+closeBtn.addEventListener("click", closeModal);
 modal.addEventListener("click", (e) => {
-  if (e.target === modal) modal.classList.remove("active");
+  if (e.target === modal) closeModal();
+});
+
+modal.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    e.preventDefault();
+    closeModal();
+    return;
+  }
+
+  if (e.key !== "Tab") return;
+
+  const focusableElements = [...modal.querySelectorAll(
+    'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
+  )];
+  const firstElement = focusableElements[0];
+  const lastElement = focusableElements[focusableElements.length - 1];
+
+  if (e.shiftKey && document.activeElement === firstElement) {
+    e.preventDefault();
+    lastElement.focus();
+  } else if (!e.shiftKey && document.activeElement === lastElement) {
+    e.preventDefault();
+    firstElement.focus();
+  }
 });

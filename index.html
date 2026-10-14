@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<div id="p5-container"></div>
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,12 +12,14 @@
 </head>
 
 <body>
+  <div id="p5-container" aria-hidden="true"></div>
+
   <!-- class="color-change-5x" -->
   <header>
-    <nav class="social-links nav nav-pills nav-fill flex-row">
-      <a class="flex-sm-fill text-sm-center nav-link disabled" aria-current="page" aria-disabled="true"
-        href="https://www.instagram.com/mode.tera.on/" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
-      <a class="flex-sm-fill text-sm-center nav-link" href="https://www.linkedin.com/in/francesco-rogo/" target="_blank"
+    <nav class="social-links nav nav-pills nav-fill flex-row" aria-label="Social links">
+      <a class="flex-sm-fill text-sm-center nav-link" href="https://www.instagram.com/mode.tera.on/" target="_blank"
+        rel="noopener noreferrer">INSTAGRAM</a>
+      <a class="flex-sm-fill text-sm-center nav-link" href="https://it.linkedin.com/in/francesco-rogo" target="_blank"
         rel="noopener noreferrer">LINKEDIN</a>
       <a class="flex-sm-fill text-sm-center nav-link" href="https://github.com/Fra-Tera04" target="_blank"
         rel="noopener noreferrer">GITHUB</a>
@@ -52,17 +52,17 @@
     <h1 class="creative-title">DEV</h1>
 
     <div class="creative-description word-animation-container">
-      <p class="word-item">CREATIVE</p>
-      <p class="word-item">EFFICIENT</p>
-      <p class="word-item">RELIABLE</p>
-      <p class="word-item">PRECISE</p>
-      <p class="word-item">LOGICAL</p>
-      <p class="word-item">INSIGHTFUL</p>
-      <p class="word-item">THOROUGH</p>
-      <p class="word-item">OPTIMIZE</p>
-      <p class="word-item">ELEGANT</p>
-      <p class="word-item">COLLABORATIVE</p>
-      <p class="word-item">DEDICATED</p>
+      <p class="word-item">-CREATIVE</p>
+      <p class="word-item">-EFFICIENT</p>
+      <p class="word-item">-RELIABLE</p>
+      <p class="word-item">-PRECISE</p>
+      <p class="word-item">-LOGICAL</p>
+      <p class="word-item">-INSIGHTFUL</p>
+      <p class="word-item">-THOROUGH</p>
+      <p class="word-item">-OPTIMIZE</p>
+      <p class="word-item">-ELEGANT</p>
+      <p class="word-item">-COLLABORATIVE</p>
+      <p class="word-item">-DEDICATED</p>
     </div>
   </div>
 
@@ -148,7 +148,8 @@
           <div class="content">
             <h2>My Academic Journey</h2>
             <p>I'm attending the University of Federico II for my Master's degree in Computer Science.</p>
-            <a href="#" class="read-more-btn" data-topic="academic">Read More</a>
+            <a href="#" class="read-more-btn" data-topic="academic"
+              aria-label="Read more about my academic journey">Read More</a>
           </div>
         </div>
         <!-- CARD 2 -->
@@ -157,7 +158,8 @@
           <div class="content">
             <h2>My Personal Projects</h2>
             <p>This site serves as a starting point, with many more projects to come in the near future.</p>
-            <a href="#" class="read-more-btn" data-topic="projects">Read More</a>
+            <a href="#" class="read-more-btn" data-topic="projects"
+              aria-label="Read more about my personal projects">Read More</a>
           </div>
         </div>
         <!-- CARD 3 -->
@@ -166,7 +168,8 @@
           <div class="content">
             <h2>My Hands-on Experience</h2>
             <p>An Apprenticeship at Synclab and a Java Full Stack Developer at SkillFactory.</p>
-            <a href="#" class="read-more-btn" data-topic="experience">Read More</a>
+            <a href="#" class="read-more-btn" data-topic="experience"
+              aria-label="Read more about my hands-on experience">Read More</a>
           </div>
         </div>
       </div>
@@ -174,10 +177,10 @@
   </section>
 
   <!-- --- STRUTTURA DELLA FINESTRA MODALE --- -->
-  <div id="details-modal" class="modal-overlay">
+  <div id="details-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Project details">
     <div class="modal-content box">
-      <button id="close-modal" class="close-btn">&times;</button>
-      <div id="modal-body">
+      <button id="close-modal" class="close-btn" type="button" aria-label="Close project details">&times;</button>
+      <div id="modal-body" aria-live="polite">
         <!-- Il testo del README verrà iniettato qui da JavaScript -->
       </div>
     </div>
@@ -188,7 +191,7 @@
   <section id="contact" class="section-full-height section-centered">
     <div class="section-content-wrapper">
       <div class="section-title">
-        <h2 class="section-title text-left letsleave wave">LETS LEAVE</h2>
+        <h2 class="section-title text-left letsleave wave">LET'S LEAVE</h2>
         <h2 class="section-title text-center amark wave">A MARK</h2>
         <h2 class="section-title text-right together wave">TOGETHER</h2>
       </div>
@@ -196,9 +199,10 @@
         <p>OPEN TO NEW PROJECTS AND COLLABORATIONS.</p>
       </div>
 
-      <div class="social-links nav nav-pills flex-row justify-content-center">
-        <a class="flex-sm-fill text-sm-center nav-link disabled" aria-current="page" aria-disabled="true"
-          href="https://www.instagram.com/mode.tera.on/" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+      <div class="social-links nav nav-pills flex-row justify-content-center" role="navigation"
+        aria-label="Social links">
+        <a class="flex-sm-fill text-sm-center nav-link" href="https://www.instagram.com/mode.tera.on/" target="_blank"
+          rel="noopener noreferrer">INSTAGRAM</a>
         <a class="flex-sm-fill text-sm-center nav-link" href="https://www.linkedin.com/in/francesco-rogo/"
           target="_blank" rel="noopener noreferrer">LINKEDIN</a>
         <a class="flex-sm-fill text-sm-center nav-link" href="https://github.com/Fra-Tera04" target="_blank"
@@ -208,7 +212,7 @@
   </section>
 
   <!-- Bottone Torna in Cima -->
-  <button id="back-to-top" aria-label="Torna in cima">
+  <button id="back-to-top" type="button" aria-label="Back to top">
     <span class="icon">▲</span>
     <!-- <span class="icon">♥</span> -->
   </button>
