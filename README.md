@@ -13,7 +13,7 @@ Backend Developer with a strong theoretical foundation in Computer Science and a
 
 <!-- START: ACADEMIC -->
 
-## 🎯 Background & Education
+## 🎯 Background &amp; Education
 
 - 🎓 **M.Sc. in Computer Science** (Artificial Intelligence track) — _In Progress_
 - 🎓 **B.Sc. in Computer Science** (EQF Level 6) — _University of Naples Federico II_
@@ -29,20 +29,20 @@ Backend Developer with a strong theoretical foundation in Computer Science and a
 
 ## 🛠️ Technical Skills
 
-### Core Backend & Languages
+### Core Backend &amp; Languages
 
 - **Languages:** Java (8, 21), Python 3, Bash / Shell Scripting, SQL & PLSQL, C
 - **Frameworks & Ecosystem:** Spring Boot 3 (Spring Data JPA, RESTful APIs)
 - **Architecture & Paradigms:** Object-Oriented Programming (OOP), SOLID Principles, GoF Design Patterns, Functional Programming
 
-### Systems, DevOps & Tooling
+### Systems, DevOps &amp; Tooling
 
 - **Operating Systems:** Windows / GNU-Linux
 - **Version Control & CI/CD:** Git, GitHub (GitHub Projects, Issue Tracking, Actions / Basic CI workflows, Pull Requests & Code Reviews)
 - **Databases:** Relational Databases (PostgreSQL, MySQL), Schema Design (E-R), Normalization, ACID Transactions
 - **Tooling & Writing:** LaTeX (scientific reports & academic writing), Markdown, Open-Source and Proprietary Office Automation Suites
 
-### Theoretical & Methodological Foundations
+### Theoretical &amp; Methodological Foundations
 
 - **Algorithms & Data Structures:** Asymptotic complexity analysis, Graph theory, Trees, Indexed structures
 - **Formal Methods & Verification:** Automata theory, Formal languages, Mathematical logic, Modal/Epistemic logic & Model Checking
@@ -53,7 +53,7 @@ Backend Developer with a strong theoretical foundation in Computer Science and a
 
 <!-- START: PROJECTS -->
 
-## 🔭 Creative Coding & Personal Explorations
+## 🔭 Creative Coding &amp; Personal Explorations
 
 Beyond enterprise engineering, I explore algorithmic art, visual synthesis, and sound generation:
 

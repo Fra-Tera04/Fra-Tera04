@@ -1,6 +1,6 @@
 /* style.css - Creative Dev con sfondo p5.js */
 
-@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@400;500;700;800&family=Cascadia+Code&display=swap");
+/* I font (Alegreya Sans SC, Cascadia Code) sono caricati dal <link> in index.html */
 
 /* 
    --- VARIABILI CENTRALIZZATE (:root) ---
@@ -80,14 +80,14 @@
 
   /* Margini specifici sfalsati (Hero layout desktop) */
   --margin-create: 1vw 1vw 1vw 1vw;
-  --margin-unique: 1vw 1vw 1vw -1vw;
-  --margin-experience: 1vw 1vw 1vw 1vw;
-  --margin-someof: 1vw 6vw 1vw -3vw;
-  --margin-latest: 0vw 10vw 1vw 3vw;
-  --margin-works: 0vw 1vw 4vw 1vw;
-  --margin-letsleave: 0vw 1vw 0 -5vw;
-  --margin-amark: 0rem 6vw 1vw 1vw;
-  --margin-together: 1vw 1vw 5vw 1vw;
+  --margin-unique: 1vw 1vw 1vw -6vw;
+  --margin-experience: 1vw 1vw 1vw -1vw;
+  --margin-someof: 1vw 7vw 1vw -1vw;
+  --margin-latest: 0vw 10vw 1vw -3vw;
+  --margin-works: 0vw 1vw 4vw -1vw;
+  --margin-letsleave: 0vw 1vw 0 0vw;
+  --margin-amark: 0rem 6vw -1vw -4vw;
+  --margin-together: 1vw 1vw 5vw -6vw;
 
   /* --- DIMENSIONI & LAYOUT --- */
   --hero-header-gap: 2.5rem;
@@ -102,7 +102,7 @@
   --word-animation-duration: 22s;
   --sheen-duration: 2s;
   --wave-duration: 10s;
-  --pop-duration: 2s;
+  --pop-duration: 4s;
   --transition-fast: 0.2s ease;
   --transition-base: 0.3s ease;
   --transition-spring: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -119,6 +119,11 @@
 
 canvas {
   display: block;
+}
+
+/* Con la modale aperta la pagina sotto non scorre */
+body:has(dialog[open]) {
+  overflow: hidden;
 }
 
 html {
@@ -344,6 +349,25 @@ p {
   font-weight: 400;
 }
 
+/* Un solo h1/h2 per titolo: ogni riga interna resta un blocco a sé */
+.main-title>span {
+  display: block;
+}
+
+.title-stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.title-stack>span {
+  width: 100%;
+}
+
+.title-block>span {
+  display: block;
+  width: 100%;
+}
+
 .subtitle {
   font-family: var(--font-text);
   font-size: clamp(1rem, 2.4svh, 1.5rem);
@@ -362,7 +386,8 @@ p {
 
 .header-description p,
 .section-description,
-.services-intro p {
+.services-intro p,
+.services-title {
   font-family: var(--font-text);
   line-height: 1.5em;
   color: var(--color-light-text);
@@ -431,7 +456,7 @@ p {
   opacity: 0;
   transform: translateY(-100%);
   animation: wordSlideInOut var(--tempo-animazione) infinite;
-  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
   text-transform: uppercase;
   text-align: right;
@@ -513,40 +538,73 @@ p {
   max-width: min(82vw, 80rem);
 }
 
-.create {
-  margin: var(--margin-create);
+/* --- TITOLI A SCALETTA (Staggered Titles) - Regole Generali --- */
+.staggered-title {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
-.unique {
-  margin: var(--margin-unique);
+.staggered-title span {
+  display: block;
+  width: 100%;
+  margin: 1vw 0vw 1vw -3vw;
+  word-spacing: 2vw;
 }
 
-.experience {
-  margin: var(--margin-experience);
+/* Regola automatica di allineamento: 1° sx, 2° centro, 3° dx */
+.staggered-title span:nth-child(1) {
+  text-align: left;
 }
 
-.someof {
-  margin: var(--margin-someof);
+.staggered-title span:nth-child(2) {
+  text-align: center;
 }
 
-.latest {
-  margin: var(--margin-latest);
+.staggered-title span:nth-child(3) {
+  text-align: right;
 }
 
-.works {
-  margin: var(--margin-works);
+
+/* --- OFFSET SPECIFICI PER REPLICARE IL TUO DESIGN ORIGINALE --- */
+
+/* 1. Sezione ABOUT ("CREATE UNIQUE EXPERIENCE") */
+#about-title span:nth-child(1) {
+  margin: var(--margin-create)
 }
 
-.letsleave {
-  margin: var(--margin-letsleave);
+#about-title span:nth-child(2) {
+  margin: var(--margin-unique)
 }
 
-.amark {
-  margin: var(--margin-amark);
+#about-title span:nth-child(3) {
+  margin: var(--margin-experience)
 }
 
-.together {
-  margin: var(--margin-together);
+/* 2. Sezione WORKS ("SOME OF MY LATEST WORKS") */
+#works-title span:nth-child(1) {
+  margin: var(--margin-someof)
+}
+
+#works-title span:nth-child(2) {
+  margin: var(--margin-latest)
+}
+
+#works-title span:nth-child(3) {
+  margin: var(--margin-works)
+}
+
+/* 3. Sezione CONTACT ("LET'S LEAVE A MARK TOGETHER") */
+#contact-title span:nth-child(1) {
+  margin: var(--margin-letsleave)
+}
+
+#contact-title span:nth-child(2) {
+  margin: var(--margin-amark)
+}
+
+#contact-title span:nth-child(3) {
+  margin: var(--margin-together)
 }
 
 .text-directional-pop-up {
@@ -627,15 +685,23 @@ p {
   justify-content: space-between;
 }
 
-.services-intro p {
+.services-intro p,
+.services-title {
   font-size: clamp(0.95rem, 1.8svh, 1.2rem);
   padding: 0.5rem 0;
   margin-bottom: var(--spacing-small);
 }
 
+.services-title {
+  font-weight: 400;
+}
+
 .service-list {
   flex: 2;
   max-width: min(62vw, 64rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .service-item {
@@ -782,7 +848,7 @@ p {
   align-items: flex-start;
 }
 
-#works .content h2 {
+#works .content h3 {
   font-size: 2em;
   color: var(--color-light-text);
   margin-bottom: 15px;
@@ -790,7 +856,7 @@ p {
   transition: color var(--transition-base);
 }
 
-#works .box:hover .content h2 {
+#works .box:hover .content h3 {
   color: var(--magenta);
 }
 
@@ -801,8 +867,11 @@ p {
   font-family: var(--font-text);
 }
 
-#works .content a {
+#works .content .read-more-btn {
   font-family: var(--font-text);
+  font-size: inherit;
+  line-height: inherit;
+  cursor: pointer;
   color: var(--color-accent-text);
   background: transparent;
   border: 1px solid var(--color-accent);
@@ -815,7 +884,7 @@ p {
     box-shadow var(--transition-base);
 }
 
-#works .content a:hover {
+#works .content .read-more-btn:hover {
   background: var(--blue);
   color: var(--color-light-text);
   border-color: var(--blue);
@@ -837,13 +906,21 @@ p {
 /* 
    --- MODALE (README) ---
     */
-.modal-overlay {
+dialog.modal-overlay {
   position: fixed;
   inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  color: inherit;
   background: var(--bg-modal-overlay);
   backdrop-filter: blur(8px);
   z-index: 1000;
-  display: flex;
   justify-content: center;
   align-items: center;
   opacity: 0;
@@ -851,10 +928,20 @@ p {
   transition: opacity 0.4s ease, visibility 0s linear 0.4s;
 }
 
-.modal-overlay.active {
+/* display:flex solo quando aperto, altrimenti il dialog resterebbe visibile */
+dialog.modal-overlay[open] {
+  display: flex;
+}
+
+dialog.modal-overlay.active {
   opacity: 1;
   visibility: visible;
   transition-delay: 0s;
+}
+
+/* L'overlay scuro/sfocato è già il dialog stesso */
+dialog.modal-overlay::backdrop {
+  background: transparent;
 }
 
 .modal-content {
@@ -872,7 +959,7 @@ p {
   transition: transform 0.4s ease;
 }
 
-.modal-overlay.active .modal-content {
+dialog.modal-overlay.active .modal-content {
   transform: translateY(0);
 }
 
@@ -1029,6 +1116,8 @@ p {
 }
 
 .social-links a {
+  display: block;
+  /* come quando i link erano figli diretti del flex container */
   font-size: 1.2rem;
   font-weight: 500;
 }
@@ -1070,6 +1159,7 @@ p {
   }
 
   .services-intro p,
+  .services-title,
   .gradient-text {
     width: 100%;
   }
@@ -1163,7 +1253,8 @@ p {
     align-items: center;
   }
 
-  .services-intro p {
+  .services-intro p,
+  .services-title {
     font-size: clamp(1rem, min(2vw, 2svh), 1.2rem);
   }
 
@@ -1274,7 +1365,8 @@ p {
 
   .header-description p,
   .section-description,
-  .services-intro p {
+  .services-intro p,
+  .services-title {
     font-size: clamp(0.9rem, min(3.5vw, 1.9svh), 1.05rem);
     line-height: 1.65;
   }
@@ -1316,6 +1408,10 @@ p {
     gap: 1rem;
   }
 
+  .title-stack {
+    gap: 1rem;
+  }
+
   .create,
   .unique,
   .experience,
@@ -1354,7 +1450,8 @@ p {
     text-align: center;
   }
 
-  .services-intro p {
+  .services-intro p,
+  .services-title {
     margin-bottom: 0.5rem;
   }
 
@@ -1421,7 +1518,7 @@ p {
     padding: clamp(1.25rem, min(5vw, 5svh), 2rem);
   }
 
-  #works .content h2 {
+  #works .content h3 {
     font-size: clamp(1.5rem, min(6vw, 4svh), 2rem);
     line-height: 1.1;
   }
@@ -1431,7 +1528,7 @@ p {
     overflow-wrap: anywhere;
   }
 
-  #works .content a {
+  #works .content .read-more-btn {
     min-height: 2.75rem;
     display: inline-flex;
     align-items: center;
@@ -1488,7 +1585,7 @@ p {
     background: var(--bg-box-card);
   }
 
-  #works .box:hover .content h2 {
+  #works .box:hover .content h3 {
     color: var(--color-light-text);
   }
 }

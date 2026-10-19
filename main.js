@@ -1,23 +1,24 @@
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+// --- ANNO NEL FOOTER ---
+const yearEl = document.getElementById("year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+// --- TORNA IN CIMA ---
 const backToTopBtn = document.getElementById("back-to-top");
 
-// Mostra pulsante dopo 300px
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 300) {
-    backToTopBtn.classList.add("visible");
-  } else {
-    backToTopBtn.classList.remove("visible");
-  }
-});
+// Mostra il pulsante dopo 300px
+window.addEventListener(
+  "scroll",
+  () => backToTopBtn.classList.toggle("visible", window.scrollY > 300),
+  { passive: true }
+);
 
 backToTopBtn.addEventListener("click", () => {
-  if (typeof lenis !== "undefined") {
-    lenis.scrollTo(0);
-  } else {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }
+  window.scrollTo({
+    top: 0,
+    behavior: prefersReducedMotion.matches ? "auto" : "smooth",
+  });
 });
 
 // --- CONTENUTI PRESI DAL README.MD ---
@@ -28,7 +29,7 @@ const detailsData = {
   experience: "<p>Loading data...</p>",
 };
 
-// Funzione "estrattore": cerca i segnalibri e taglia il testo in mezzo
+// Estrattore: cerca i segnalibri nel README e ritaglia il testo in mezzo
 function extractSection(text, marker) {
   const startTag = `<!-- START: ${marker} -->`;
   const endTag = `<!-- END: ${marker} -->`;
@@ -36,24 +37,21 @@ function extractSection(text, marker) {
   const endIndex = text.indexOf(endTag);
 
   if (startIndex !== -1 && endIndex !== -1) {
-    // Taglia la parte che ci interessa
     const rawMarkdown = text
       .substring(startIndex + startTag.length, endIndex)
       .trim();
     // Converte il Markdown in HTML pronto per il sito
     return marked.parse(rawMarkdown);
   }
-  return "<p>Sezione non trovata nel README.</p>";
+  return "<p>Section not found in the README.</p>";
 }
 
-// Chiamata Fetch per leggere il file README.md in automatico
 fetch("README.md")
   .then((response) => {
-    if (!response.ok) throw new Error("README non trovato");
+    if (!response.ok) throw new Error("README not found");
     return response.text();
   })
   .then((markdownText) => {
-    // Popola dinamicamente i dati tagliando le sezioni
     detailsData.academic = extractSection(markdownText, "ACADEMIC");
     detailsData.projects = extractSection(markdownText, "PROJECTS");
     detailsData.experience = extractSection(markdownText, "EXPERIENCE");
@@ -61,60 +59,77 @@ fetch("README.md")
   .catch((error) => {
     console.error(error);
     const errorMsg =
-      "<p>Errore nel caricamento del README. Verifica che il file sia nella stessa cartella.</p>";
+      "<p>Could not load the README. Check that the file is in the same folder.</p>";
     detailsData.academic = errorMsg;
     detailsData.projects = errorMsg;
     detailsData.experience = errorMsg;
   });
 
-// --- LOGICA DELLA MODALE (Rimane identica a prima) ---
+// --- MODALE (elemento <dialog> nativo) ---
+// showModal() gestisce da solo: focus trap, sfondo inerte, tasto ESC e livello in primo piano.
 const modal = document.getElementById("details-modal");
+const modalContent = modal.querySelector(".modal-content");
 const modalBody = document.getElementById("modal-body");
 const closeBtn = document.getElementById("close-modal");
 const readMoreBtns = document.querySelectorAll(".read-more-btn");
-let modalTrigger;
+let modalTrigger = null;
+let isClosing = false;
 
-function closeModal() {
-  modal.classList.remove("active");
-  modalTrigger?.focus();
+function openModal(btn) {
+  modalTrigger = btn;
+  modalBody.innerHTML = detailsData[btn.dataset.topic] ?? "";
+
+  // Il primo titolo del contenuto diventa il nome accessibile della finestra
+  modal.removeAttribute("aria-labelledby");
+  const heading = modalBody.querySelector("h1, h2, h3");
+  if (heading) {
+    heading.id = "modal-title";
+    modal.setAttribute("aria-labelledby", "modal-title");
+  }
+
+  modalContent.scrollTop = 0;
+  modal.showModal();
+  // Frame successivo: fa partire la transizione di apertura. Il focus va dato
+  // solo ora: finché il dialog è "visibility: hidden" i suoi figli non sono focalizzabili.
+  requestAnimationFrame(() => {
+    modal.classList.add("active");
+    closeBtn.focus();
+  });
 }
 
-readMoreBtns.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    e.preventDefault();
-    modalTrigger = btn;
-    const topic = btn.getAttribute("data-topic");
-    modalBody.innerHTML = detailsData[topic]; // Inserisce l'HTML generato dal README
-    modal.classList.add("active");
-    setTimeout(() => closeBtn.focus(), 0);
-  });
-});
+function closeModal() {
+  if (!modal.open || isClosing) return;
+  isClosing = true;
+  modal.classList.remove("active"); // avvia la dissolvenza
+
+  let timer;
+  const finish = () => {
+    clearTimeout(timer);
+    modal.removeEventListener("transitionend", onTransitionEnd);
+    isClosing = false;
+    modal.close();
+  };
+  const onTransitionEnd = (e) => {
+    if (e.target === modal && e.propertyName === "opacity") finish();
+  };
+  modal.addEventListener("transitionend", onTransitionEnd);
+  timer = setTimeout(finish, 500); // rete di sicurezza
+}
+
+readMoreBtns.forEach((btn) => btn.addEventListener("click", () => openModal(btn)));
 
 closeBtn.addEventListener("click", closeModal);
+
+// Clic sull'overlay (fuori dal riquadro) chiude
 modal.addEventListener("click", (e) => {
   if (e.target === modal) closeModal();
 });
 
-modal.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    e.preventDefault();
-    closeModal();
-    return;
-  }
-
-  if (e.key !== "Tab") return;
-
-  const focusableElements = [...modal.querySelectorAll(
-    'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
-  )];
-  const firstElement = focusableElements[0];
-  const lastElement = focusableElements[focusableElements.length - 1];
-
-  if (e.shiftKey && document.activeElement === firstElement) {
-    e.preventDefault();
-    lastElement.focus();
-  } else if (!e.shiftKey && document.activeElement === lastElement) {
-    e.preventDefault();
-    firstElement.focus();
-  }
+// ESC: usa la nostra chiusura con dissolvenza
+modal.addEventListener("cancel", (e) => {
+  e.preventDefault();
+  closeModal();
 });
+
+// A chiusura avvenuta il focus torna al bottone che l'aveva aperta
+modal.addEventListener("close", () => modalTrigger?.focus());

@@ -7,6 +7,10 @@ function setup() {
   for (let i = 0; i < 80; i++) {
     particles.push(new Particle());
   }
+  // Rispetta prefers-reduced-motion: disegna un solo fotogramma statico
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    noLoop();
+  }
 }
 
 function draw() {
@@ -55,4 +59,5 @@ class Particle {
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
+  if (!isLooping()) redraw(); // con noLoop() il resize svuota il canvas
 }
